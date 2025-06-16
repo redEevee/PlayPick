@@ -1,0 +1,19 @@
+{
+  "name": "FrontProj",
+  "private": true,
+  "workspaces": [
+    "main-container",
+    "Landing-Page",
+    "navigation-bar-app"
+  ],
+  "scripts": {
+    "start": "lerna run start --parallel"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.10",
+    "autoprefixer": "^10.4.21",
+    "cross-env": "^7.0.3",
+    "lerna": "^8.2.2",
+    "tailwindcss": "^4.1.10"
+  }
+}
