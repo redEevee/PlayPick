@@ -54,7 +54,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 0 10px #4df342, 0 0 20px #aefaa5, 0 0 30px #39ff14;
+  box-shadow: 0 0 10px #9bff94, 0 0 20px #aefaa5, 0 0 30px #a5fa96;
 }
 
 .logo-section {
@@ -70,22 +70,18 @@ body {
 }
 
 .logo-icon {
-  width: 32px;
-  height: 32px;
-  background: black;
-  border-radius: 4px;
+  width: 80px;
+  height: 60px;
+  border-radius: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-weight: bold;
   font-size: 14px;
+  margin-right: 30px;
 }
 
-.logo-text {
-  color: #6b7280;
-  font-size: 14px;
-}
 
 .nav {
   display: flex;

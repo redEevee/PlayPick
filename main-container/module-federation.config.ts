@@ -4,6 +4,7 @@ export const mfConfig = {
     LandingPageApp: "LandingPageApp@http://localhost:3001/remoteEntry.js",
     NavigationBar: "NavigationBar@http://localhost:3002/remoteEntry.js",
     VersusGame: "VersusGame@http://localhost:3004/remoteEntry.js",
+    PersonQuizGame: "PersonQuizGame@http://localhost:3003/remoteEntry.js",
     // javascriptTestApp: "javascriptTestApp@http://localhost:3002/remoteEntry.js",
     // kakaoAuthenticationApp: "kakaoAuthenticationApp@http://localhost:3003/remoteEntry.js",
     // vuetifyTailwindBoardApp: "vuetifyTailwindBoardApp@http://localhost:3004/remoteEntry.js",

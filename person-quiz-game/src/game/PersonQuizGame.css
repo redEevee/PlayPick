@@ -1,0 +1,247 @@
+/* src/game/PersonQuizGame.css - App.css 스타일 통합 */
+
+/* App.css의 Pretendard 폰트 사용 */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+
+.quiz-container {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 24px; /* 패딩 증가 */
+  background-color: #ffffff; /* 흰색 배경 */
+  border-radius: 16px; /* 더 둥근 모서리 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 그림자 강화 */
+  text-align: center;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; /* Pretendard 폰트 적용 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px; /* 요소 간 간격 */
+}
+
+.person-image {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%; /* 원형 이미지 */
+  object-fit: cover;
+  margin-bottom: 16px;
+  border: 4px solid #14b8a6; /* App.css의 primary color */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 그림자 강화 */
+}
+
+h2 {
+  color: #111827; /* App.css의 텍스트 색상 */
+  margin-bottom: 8px;
+  font-size: 2em; /* 크기 유지 */
+  font-weight: 700; /* 더 굵게 */
+}
+
+h3 {
+  color: #374151; /* App.css의 텍스트 색상 */
+  margin-bottom: 24px; /* 간격 증가 */
+  font-size: 1.25em; /* 크기 유지 */
+  font-weight: 500;
+}
+
+.input-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px; /* 입력 필드와 버튼 사이 간격 */
+  width: 100%; /* 너비 100% */
+}
+
+.answer-input {
+  width: calc(100% - 24px); /* 패딩 고려한 너비 */
+  padding: 12px 16px; /* 패딩 조정 */
+  font-size: 1.1em;
+  border-radius: 8px;
+  border: 1px solid #d1d5db; /* App.css의 테두리 색상 */
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: #374151; /* 텍스트 색상 */
+}
+
+.answer-input:focus {
+  border-color: #14b8a6; /* App.css의 primary color */
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2); /* 포커스 시 그림자 */
+}
+
+.submit-button,
+.next-button,
+.start-button,
+.restart-button {
+  padding: 12px 25px;
+  font-size: 1.1em;
+  color: white;
+  border: none;
+  border-radius: 9999px; /* 완전히 둥근 버튼 */
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  min-width: 150px;
+  font-weight: 600; /* 글자 굵게 */
+  letter-spacing: 0.5px;
+}
+
+.submit-button, .start-button, .next-button {
+    background-color: #14b8a6; /* App.css의 primary color */
+    box-shadow: 0 4px 6px rgba(20, 184, 166, 0.2);
+}
+
+.submit-button:hover, .start-button:hover, .next-button:hover {
+    background-color: #0d9488; /* App.css의 primary color hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(20, 184, 166, 0.3);
+}
+
+.restart-button {
+  background-color: #dc2626; /* 빨간색 유지 (tailwind red-600) */
+  box-shadow: 0 4px 6px rgba(220, 38, 38, 0.2);
+}
+
+.restart-button:hover {
+  background-color: #b91c1c; /* 빨간색 hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(220, 38, 38, 0.3);
+}
+
+.submit-button:disabled,
+.next-button:disabled,
+.start-button:disabled,
+.restart-button:disabled {
+    opacity: 0.5; /* 비활성화 시 투명도 조절 */
+    cursor: not-allowed;
+    transform: none; /* hover 효과 제거 */
+    box-shadow: none; /* 그림자 제거 */
+}
+
+.feedback-message {
+  margin-top: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 8px; /* 더 둥근 모서리 */
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.feedback-message.correct {
+  color: #047857; /* Tailwind emerald-700 */
+  background-color: #d1fae5; /* Tailwind emerald-100 */
+}
+
+.feedback-message.wrong {
+  color: #b91c1c; /* Tailwind red-700 */
+  background-color: #fee2e2; /* Tailwind red-100 */
+}
+
+.current-score-display,
+.final-score-display {
+  margin-top: 25px;
+  font-size: 1.5em; /* 점수 크기 증가 */
+  color: #0056b3; /* 기존 파란색 유지 또는 App.css 스타일에 맞게 변경 가능 */
+  font-weight: bold;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 600px) {
+  .quiz-container {
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .person-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  h2 {
+    font-size: 1.75em;
+  }
+
+  h3 {
+    font-size: 1.1em;
+  }
+
+  .answer-input,
+  .submit-button,
+  .next-button,
+  .start-button,
+  .restart-button {
+    font-size: 1em;
+    padding: 10px 20px;
+    min-width: unset;
+    width: 100%;
+  }
+
+  .feedback-message {
+    font-size: 1.1em;
+    padding: 10px;
+  }
+
+  .current-score-display,
+  .final-score-display {
+    font-size: 1.3em;
+  }
+}
+.info-button {
+  background-color: #3b82f6; /* Tailwind blue-500 */
+  color: white;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  min-width: 150px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+}
+
+.info-button:hover {
+  background-color: #2563eb; /* Tailwind blue-600 */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(59, 130, 246, 0.3);
+}
+
+.info-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.person-info-box {
+  background-color: #f0f9ff; /* Tailwind blue-50 */
+  border: 1px solid #bfdbfe; /* Tailwind blue-200 */
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 20px;
+  font-size: 0.95em;
+  color: #1e40af; /* Tailwind blue-800 */
+  line-height: 1.6;
+  text-align: left; /* 텍스트 정렬 */
+  width: 100%;
+  box-sizing: border-box;
+  animation: fadeIn 0.5s ease-out; /* 페이드인 애니메이션 */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 모바일 반응형 디자인에도 info-button 추가 */
+@media (max-width: 600px) {
+  .info-button {
+    font-size: 1em;
+    padding: 10px 20px;
+    min-width: unset;
+    width: 100%;
+  }
+}

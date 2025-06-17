@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="dist6">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Landing-Page/dist/@mf-types.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Landing-Page/dist/.dev-server.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
