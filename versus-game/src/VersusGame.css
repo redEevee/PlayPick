@@ -478,36 +478,34 @@ body {
   font-weight: 600;
 }
 
-.category-icon {
-  font-size: 2rem;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f9fafb;
-  border-radius: 12px;
-}
 
 .category-image {
-  height: 140px;
-  border-radius: 1rem;
-  margin-bottom: 1.5rem;
+  width: 100%;
+  height: 100%;
   position: relative;
   overflow: hidden;
-  background-size: cover;
-  background-position: center;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
 }
+.category-image img {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 1rem;
+}
+
 
 .image-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.4); /* 어두운 오버레이 */
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .category-card:hover .image-overlay {
