@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>미연시 - 확장 루트 + 호감도 시각화</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+            transition: background-image 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+        }
+
+        h1, p {
+            text-shadow: 1px 1px 3px #0008;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #eee;
+            color: #333;
+        }
+
+        #affection-bar-container {
+            width: 300px;
+            height: 25px;
+            border: 2px solid #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #4449;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        #affection-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff6a6a, #ffbaba);
+            transition: width 0.7s ease, background-color 0.7s ease;
+        }
+
+        #game {
+            background: rgba(0,0,0,0.4);
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 600px;
+        }
+
+        .dialogue {
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            text-shadow: 1px 1px 3px #0008;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🎮 Choices of a Spring Day</h1>
+<p>캐릭터를 선택하세요:</p>
+<button onclick="startGame('yuri')">📚 유리</button>
+<button onclick="startGame('hana')">🏀 하나</button>
+<button onclick="startGame('mina')">🎨 미나</button>
+
+<div id="affection-bar-container">
+    <div id="affection-bar"></div>
+</div>
+
+<div id="game"></div>
+
+<script>
+    const storyData = {
+        yuri: [
+            {
+                text: "도서관에서 유리가 책을 읽고 있다.",
+                choices: [
+                    { text: "무슨 책이야?", affection: 1 },
+                    { text: "조용히 지나간다.", affection: 0 }
+                ]
+            },
+            {
+                text: "유리: 이 책, 좋아해?",
+                choices: [
+                    { text: "응, 재밌더라.", affection: 1 },
+                    { text: "그냥 너한테 관심 있어서.", affection: 2 }
+                ]
+            },
+            {
+                text: "유리: 다음 주 시험 공부 같이 할래?",
+                choices: [
+                    { text: "좋아, 같이 하자.", affection: 2 },
+                    { text: "미안, 이번 주는 바빠서...", affection: 0 }
+                ]
+            },
+            {
+                text: "유리: 너랑 있으면 마음이 편해.",
+                choices: [
+                    { text: "나도 그래.", affection: 2 },
+                    { text: "그냥 친구로 생각해줘.", affection: 0 }
+                ]
+            }
+        ],
+        hana: [
+            {
+                text: "하나가 농구 연습 중이다.",
+                choices: [
+                    { text: "와, 정말 잘한다!", affection: 1 },
+                    { text: "방해할까봐 그냥 가야겠다.", affection: 0 }
+                ]
+            },
+            {
+                text: "하나: 체육대회 연습 도와줄래?",
+                choices: [
+                    { text: "좋아! 같이 하자", affection: 2 },
+                    { text: "미안, 나는 운동 잘 못해서…", affection: -1 }
+                ]
+            },
+            {
+                text: "하나: 네가 와서 힘이 났어.",
+                choices: [
+                    { text: "언제든지!", affection: 2 },
+                    { text: "내가 잘해서 그런 거 아냐.", affection: 0 }
+                ]
+            },
+            {
+                text: "하나: 다음 경기, 같이 꼭 이기자!",
+                choices: [
+                    { text: "당연하지!", affection: 2 },
+                    { text: "난 그냥 응원할게.", affection: 0 }
+                ]
+            }
+        ],
+        mina: [
+            {
+                text: "미술실에서 미나가 그림을 그리고 있다.",
+                choices: [
+                    { text: "이 그림, 정말 멋지다.", affection: 1 },
+                    { text: "미안, 방해했나 봐.", affection: 0 }
+                ]
+            },
+            {
+                text: "옥상에서 하늘을 바라보는 미나",
+                choices: [
+                    { text: "끝없는 자유?", affection: 2 },
+                    { text: "그냥 비행기 지나가네.", affection: 0.5 }
+                ]
+            },
+            {
+                text: "미나: 너도 그림 한번 그려볼래?",
+                choices: [
+                    { text: "좋아, 가르쳐줘.", affection: 2 },
+                    { text: "난 글 쓰는 게 더 좋아.", affection: 0 }
+                ]
+            },
+            {
+                text: "미나: 너랑 함께한 시간, 소중해.",
+                choices: [
+                    { text: "나도 고마워.", affection: 2 },
+                    { text: "우리 친구로 남자.", affection: 0 }
+                ]
+            }
+        ]
+    };
+
+    const backgrounds = {
+        yuri: "url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1280&q=80')",
+        hana: "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1280&q=80')",
+        mina: "url('https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1280&q=80')"
+    };
+
+    let player = {
+        route: '',
+        affection: { yuri: 0, hana: 0, mina: 0 },
+        sceneIndex: 0
+    };
+
+    const affectionBarContainer = document.getElementById("affection-bar-container");
+    const affectionBar = document.getElementById("affection-bar");
+
+    function startGame(route) {
+        player.route = route;
+        player.sceneIndex = 0;
+        player.affection[route] = 0;
+
+        affectionBarContainer.style.display = "block";
+        updateBackground(route);
+        updateAffectionBar();
+
+        document.getElementById("game").innerHTML = "";
+        renderScene();
+    }
+
+    function updateBackground(route) {
+        document.body.style.backgroundImage = backgrounds[route] || '';
+    }
+
+    function renderScene() {
+        const scene = storyData[player.route][player.sceneIndex];
+        const container = document.getElementById("game");
+        let html = `<div class="dialogue">${scene.text}</div>`;
+        scene.choices.forEach((choice, i) => {
+            html += `<button onclick="makeChoice(${i})">${choice.text}</button>`;
+        });
+        container.innerHTML = html;
+    }
+
+    function updateAffectionBar() {
+        let score = player.affection[player.route];
+        if(score < 0) score = 0;
+        if(score > 8) score = 8; // 확장된 최대 8점
+
+        // 0~8 점 범위 → 0~100% 너비 변환
+        const percent = (score / 8) * 100;
+        affectionBar.style.width = percent + "%";
+
+        // 점수에 따라 색 변화
+        if (percent > 80) {
+            affectionBar.style.background = "linear-gradient(90deg, #ff5f6d, #ffc371)";
+        } else if (percent > 60) {
+            affectionBar.style.background = "linear-gradient(90deg, #ffb347, #ffcc33)";
+        } else if (percent > 40) {
+            affectionBar.style.background = "linear-gradient(90deg, #fceabb, #f8b500)";
+        } else if (percent > 20) {
+            affectionBar.style.background = "linear-gradient(90deg, #b3ffab, #12fff7)";
+        } else {
+            affectionBar.style.background = "linear-gradient(90deg, #74ebd5, #acb6e5)";
+        }
+    }
+
+    function makeChoice(choiceIndex) {
+        const currentScene = storyData[player.route][player.sceneIndex];
+        const affectionGain = currentScene.choices[choiceIndex].affection;
+        player.affection[player.route] += affectionGain;
+        player.sceneIndex++;
+
+        updateAffectionBar();
+
+        if (player.sceneIndex >= storyData[player.route].length) {
+            showEnding();
+        } else {
+            renderScene();
+        }
+    }
+
+    function showEnding() {
+        const score = player.affection[player.route];
+        let result = "";
+        if (score >= 6) {
+            result = "💖 해피엔딩! 진심이 전해졌어.";
+        } else if (score >= 3) {
+            result = "🙂 좋은 친구가 되었다.";
+        } else {
+            result = "💔 인연은 거기까지였던 것 같다.";
+        }
+
+        document.getElementById("game").innerHTML = `
+    <p style="font-size:1.5em;">${result}</p>
+    <button onclick="location.reload()">다시하기</button>
+  `;
+
+        affectionBarContainer.style.display = "none";
+    }
+</script>
+
+</body>
+</html>

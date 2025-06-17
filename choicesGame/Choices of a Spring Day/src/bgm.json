@@ -1,0 +1,30 @@
+const bgm = document.getElementById('bgm');
+
+const bgmFiles = {
+  yuri: 'bgm_yuri.mp3',
+  hana: 'bgm_hana.mp3',
+  mina: 'bgm_mina.mp3',
+};
+
+function startGame(route) {
+  player.route = route;
+  player.sceneIndex = 0;
+  player.affection[route] = 0;
+
+  // 배경 음악 변경 및 재생
+  if (bgmFiles[route]) {
+    bgm.src = bgmFiles[route];
+    bgm.play().catch(() => {
+      console.log('사용자 상호작용이 필요합니다.');
+    });
+  } else {
+    bgm.pause();
+  }
+
+  affectionBarContainer.style.display = "block";
+  updateBackground(route);
+  updateAffectionBar();
+
+  document.getElementById("game").innerHTML = "";
+  renderScene();
+}

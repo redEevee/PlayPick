@@ -1,0 +1,44 @@
+const scenes = [
+{ text: "그 봄은, 이상할 정도로 조용했고…", bg: "bg1", delay: 3000 },
+{ text: "그날 처음 본 너는— 왠지 모르게, 기억 속에 있었던 것 같았다.", bg: "bg1", delay: 4000 },
+
+{ text: "유리: “조용한 걸 좋아해. 하지만, 너라면… 괜찮아.”", bg: "bg2", delay: 3500 },
+{ text: "하나: “같이 뛰는 거, 싫지 않잖아? 그치!”", bg: "bg3", delay: 3500 },
+{ text: "미나: “…이건, 너를 그린 거야.”", bg: "bg4", delay: 3500 },
+
+{ text: "그날의 선택이, 지금의 나를 만들었다.", bg: "bg1", delay: 3000 },
+{ text: "그리고— 아직 끝나지 않은 봄이, 여기에 있어.", bg: "bg1", delay: 3000 }
+];
+
+const textBox = document.getElementById("text-box");
+const sceneDiv = document.getElementById("scene");
+const title = document.getElementById("title");
+
+let i = 0;
+
+function showScene(index) {
+if (index >= scenes.length) {
+// 타이틀 로고 등장
+textBox.innerText = "";
+title.classList.remove("hidden");
+title.classList.add("show");
+return;
+}
+
+const scene = scenes[index];
+textBox.style.opacity = 0;
+
+setTimeout(() => {
+sceneDiv.className = `scene ${scene.bg}`;
+textBox.innerText = scene.text;
+textBox.style.animation = "none";
+void textBox.offsetWidth; // 리셋 트릭
+textBox.style.animation = "fadeIn 2s forwards";
+
+setTimeout(() => {
+showScene(index + 1);
+}, scene.delay);
+}, 500);
+}
+
+showScene(i);
