@@ -7,17 +7,24 @@ export interface GameItem {
 }
 
 export const gameDatasets: GameItem[][] = [
+
   [
     { id: 1, name: "술 먹고 기억 안 나는데, 전 여친/남친한테 장문의 카톡 + 전화 13통",
-      image: "http://localhost:3004/drink.jpg", description: "ㅇㅇㅇㅇㅇ", category: "가장 최악인 상황은 ?" },
-    { id: 2, name: "친구한테 상사 뒷담화 했는데 알고보니 상사에게 보냈다", image: "🍔", description: "미국의 대표 패스트푸드", category: "가장 최악인 상황은 ?" },
-    { id: 3, name: "고백하고 거절당했는데, 그 장면이 몰카 유튜브로 올라감 ", image: "🍣",
-      description: "그런데 조회수가 40만", category: "가장 최악인 상황은 ?" },
-    { id: 4, name: "3시간 웨이팅 줄 섰는데 알고보니 다른 줄", image: "🍝", description: "이탈리아의 면 요리", category: "가장 최악인 상황은 ?" },
-    { id: 5, name: "화상 회의중 화면과 마이크 다 끈 상황 노래부르며 물을 가져 왔는데 마이크와 캠이 켜져있음", image: "🌮", description: "멕시코의 전통 음식", category: "가장 최악인 상황은 ?" },
-    { id: 6, name: "중요한 프레젠테이션 중에 PPT에 직장 상사 험담 적어놓은게 나옴", image: "🍜", description: "한국의 인기 인스턴트 음식", category: "가장 최악인 상황은 ?" },
-    { id: 7, name: "회식 자리에서 모두 다 보는 앞에서 진지하게 공개 고백 받음", image: "🍗", description: "바삭한 닭고기 요리", category: "가장 최악인 상황은 ?" },
-    { id: 8, name: "소개팅 너무 좋았는데 집 와보니 이에 엄청 큰 고추가루가,,,", image: "🥩", description: "고급 쇠고기 요리", category: "가장 최악인 상황은 ?" },
+      image: "http://localhost:3004/phone.jpg", description: "ㅇㅇㅇㅇㅇ", category: "가장 최악인 상황은 ?" },
+    { id: 2, name: "친구한테 상사 뒷담화 했는데 알고보니 상사에게 보냈다",
+      image: "http://localhost:3004/drink.jpg", description: "미국의 대표 패스트푸드", category: "가장 최악인 상황은 ?" },
+    { id: 3, name: "고백하고 거절당했는데, 그 장면이 몰카 유튜브로 올라감 ",
+      image: "http://localhost:3004/yotue.jpg", description: "그런데 조회수가 40만", category: "가장 최악인 상황은 ?" },
+    { id: 4, name: "3시간 웨이팅 줄 섰는데 알고보니 다른 줄",
+      image: "http://localhost:3004/line.jpg", description: "이탈리아의 면 요리", category: "가장 최악인 상황은 ?" },
+    { id: 5, name: "화상 회의중 화면과 마이크 다 끈 상황 노래부르며 물을 가져 왔는데 마이크와 캠이 켜져있음",
+      image: "http://localhost:3004/haw.jpg", description: "멕시코의 전통 음식", category: "가장 최악인 상황은 ?" },
+    { id: 6, name: "중요한 프레젠테이션 중에 PPT에 직장 상사 험담 적어놓은게 나옴",
+      image: "http://localhost:3004/ppt.jpg", description: "한국의 인기 인스턴트 음식", category: "가장 최악인 상황은 ?" },
+    { id: 7, name: "회식 자리에서 모두 다 보는 앞에서 진지하게 공개 고백 받음",
+      image: "http://localhost:3004/public.jpg", description: "바삭한 닭고기 요리", category: "가장 최악인 상황은 ?" },
+    { id: 8, name: "소개팅 너무 좋았는데 집 와보니 이에 엄청 큰 고추가루가,,,",
+      image: "http://localhost:3004/go.jpg", description: "고급 쇠고기 요리", category: "가장 최악인 상황은 ?" },
   ],
   [
     { id: 9, name: "축구", image: "⚽", description: "세계에서 가장 인기있는 스포츠", category: "스포츠" },
@@ -67,6 +74,10 @@ export const getRandomPair = (excludeIds: number[] = []): [GameItem, GameItem] =
 
 export const getFilteredDatasets = (ids: number[]): GameItem[] => {
   return gameDatasets.flat().filter(item => ids.includes(item.id));
+};
+
+export const getAllItems = (): GameItem[] => {
+  return gameDatasets.flat();
 };
 
 export const getRandomPairFromFiltered = (filteredDatasets: GameItem[], excludeIds: number[] = []): [GameItem, GameItem] => {
