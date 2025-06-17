@@ -9,6 +9,7 @@ const NavigationBar = lazy(() => import("NavigationBar/App"));
 const VersusGame = lazy(() => import("VersusGame/App"));
 const PersonQuizGame = lazy(() => import("PersonQuizGame/App"));
 const ChoicesOfASpringDay = lazy(() => import("choicesOfASpringDay/App"));
+const SpotTheDifference = lazy(() => import("spotTheDifference/App"));
 
 
 const App = () => (
@@ -20,6 +21,7 @@ const App = () => (
         <Route path="/versus-game" element={<VersusGame />} />
         <Route path="/person-quiz-game" element={<PersonQuizGame />} />
         <Route path="/choices-of-a-spring-day" element={<ChoicesOfASpringDay />} />
+        <Route path="/spot-the-difference" element={<SpotTheDifference />} />
       </Routes>
     </Suspense>
   </BrowserRouter>

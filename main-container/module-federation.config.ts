@@ -6,6 +6,7 @@ export const mfConfig = {
     VersusGame: "VersusGame@http://localhost:3004/remoteEntry.js",
     PersonQuizGame: "PersonQuizGame@http://localhost:3003/remoteEntry.js",
       choicesOfASpringDay: "choicesOfASpringDay@http://localhost:3003/remoteEntry.js",
+      spotTheDifference: "spotTheDifference@http://localhost:3005/remoteEntry.js",
     // javascriptTestApp: "javascriptTestApp@http://localhost:3002/remoteEntry.js",
     // kakaoAuthenticationApp: "kakaoAuthenticationApp@http://localhost:3003/remoteEntry.js",
     // vuetifyTailwindBoardApp: "vuetifyTailwindBoardApp@http://localhost:3004/remoteEntry.js",
