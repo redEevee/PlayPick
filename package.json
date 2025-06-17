@@ -6,7 +6,8 @@
     "Landing-Page",
     "navigation-bar-app",
     "versus-game",
-    "person-quiz-game"
+    "person-quiz-game",
+    "choices-of-a-spring-day"
   ],
   "scripts": {
     "start": "lerna run start --parallel"

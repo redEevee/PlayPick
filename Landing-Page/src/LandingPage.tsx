@@ -12,14 +12,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
   const serviceCards = [
     {
       id: 1,
-      title: "이상형 월드컵",
+      title: "밸런스 게임",
       description: "라라 라라랄ㄹ랄 라랄 ㅏ랄 ㅏ랄 ",
       bgColor: "card-teal",
       iconBg: "icon-bg-white",
-      badge: "MULTI DRM",
+      badge: "GAME",
       badgeStyle: "badge-teal",
       actionBtn: "action-btn-white",
-      url: "/versus-game"
+      url: "/versus-game",
+      image:"http://localhost:3001/vs.jpeg"
     },
     {
       id: 2,
@@ -27,10 +28,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
       description: "라라 라라랄ㄹ랄 라랄 ㅏ랄 ㅏ랄 ",
       bgColor: "card-white",
       iconBg: "icon-bg-gray",
-      badge: "FREE PLAN",
+      badge: "GAME",
       badgeStyle: "badge-white",
       actionBtn: "action-btn-teal",
-      url: "/versus-game"
+      url: "/versus-game",
+      image:"http://localhost:3001/diff.jpeg"
     },
     {
       id: 3,
@@ -38,21 +40,23 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
       description: "라라 라라랄ㄹ랄 라랄 ㅏ랄 ㅏ랄 ",
       bgColor: "card-blue",
       iconBg: "icon-bg-white",
-      badge: "OS PLAYER",
+      badge: "GAME",
       badgeStyle: "badge-teal",
       actionBtn: "action-btn-white",
-      url: "/person-quiz-game"
+      url: "/person-quiz-game",
+      image:"http://localhost:3001/who.jpeg"
     },
     {
       id: 4,
-      title: "시나리오 게임",
+      title: "시뮬레이션 게임",
       description: "라라 라라랄ㄹ랄 라랄 ㅏ랄 ㅏ랄 ",
       bgColor: "card-blue",
       iconBg: "icon-bg-white",
-      badge: "OS PLAYER",
+      badge: "GAMER",
       badgeStyle: "badge-teal",
       actionBtn: "action-btn-white",
-      url: "/versus-game"
+      url: "/versus-game",
+      image:"http://localhost:3001/si.jpg"
     }
   ];
 
@@ -109,21 +113,17 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
                     <span className={`card-badge ${card.badgeStyle}`}>{card.badge}</span>
                     
                     <div className="card-icon-area">
-                      <div className={`card-icon-container ${card.iconBg}`}>
-                        <div style={{ 
-                          width: '60px', 
-                          height: '60px', 
-                          background: card.id === 2 ? '#14b8a6' : 'rgba(0,0,0,0.1)', 
-                          borderRadius: '12px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontSize: '24px',
-                          color: card.id === 2 ? 'white' : '#666'
-                        }}>
-                          {card.id === 1 ? '🛡️' : card.id === 2 ? '💰' : '▶️'}
+                      {card.id === 1 ? (
+                          <div className={`card-icon-container ${card.iconBg}`}>
+                            <img src={card.image} />
+                          </div>
+                      ) : (
+
+                        <div className={`card-icon-container2 ${card.iconBg}`}>
+                          <img src={card.image} />
                         </div>
-                      </div>
+                      )};
+
                     </div>
                   </div>
                   

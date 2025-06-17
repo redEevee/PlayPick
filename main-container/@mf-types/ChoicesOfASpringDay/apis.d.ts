@@ -1,3 +1,3 @@
 
-    export type RemoteKeys = 'ChoicesOfASpringDay/App';
-    type PackageType<T> = T extends 'ChoicesOfASpringDay/App' ? typeof import('ChoicesOfASpringDay/App') :any;
+    export type RemoteKeys = 'choicesOfASpringDay/App';
+    type PackageType<T> = T extends 'choicesOfASpringDay/App' ? typeof import('choicesOfASpringDay/App') :any;
