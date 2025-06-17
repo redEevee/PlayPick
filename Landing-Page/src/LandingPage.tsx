@@ -68,6 +68,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
     setCurrentSlide(prev => prev === 1 ? serviceCards.length : prev - 1);
   };
 
+  const flowingImages = [
+    'A.jpg', 'B.jpg', 'C.jpg', 'D.jpg', 
+    'E.jpg', 'F.jpg', 'G.jpg'
+  ];
+
   return (
     <div className="landing-container">
       
@@ -85,6 +90,24 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
           <div className="hero-actions">
 
           </div>
+        </div>
+
+        <div className="flowing-animation-container">
+          <div className="flowing-boxes">
+            {[...Array(24)].map((_, index) => (
+              <div key={index} className={`flowing-box box-${index % 4}`}>
+                <img 
+                  // src={`/LandingImge/${flowingImages[index % flowingImages.length]}`}
+                  src={`http://localhost:3001/LandingImge/${flowingImages[index % flowingImages.length]}`}
+                  alt={`Flowing image ${index + 1}`}
+                  className="flowing-box-image"
+                  
+                />
+               
+              </div>
+            ))}
+          </div>
+          
         </div>
 
         <div className="carousel-container">
