@@ -14,7 +14,7 @@ function App() {
               <span className="logo-text">+ WELLCOME</span>
             </div>
             <nav className="nav">
-              <a href="#" className="nav-link">AAA</a>
+              <a href="#" className="nav-link">VersusGame</a>
               <a href="#" className="nav-link">BBB</a>
               <a href="#" className="nav-link">CCC</a>
               <a href="#" className="nav-link">DDD</a>
