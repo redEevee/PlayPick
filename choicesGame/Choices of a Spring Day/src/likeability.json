@@ -1,0 +1,30 @@
+// 초기 상태
+let player = {
+  name: '',
+  route: '', // "yuri", "hana", "mina"
+  affection: {
+    yuri: 0,
+    hana: 0,
+    mina: 0
+  }
+};
+
+// 호감도 조정 함수
+function changeAffection(character, amount) {
+if (player.affection.hasOwnProperty(character)) {
+player.affection[character] += amount;
+console.log(`${character}의 호감도: ${player.affection[character]}`);
+}
+}
+
+// 엔딩 판단 함수
+function checkEnding(character) {
+const score = player.affection[character];
+if (score >= 3) {
+alert(`${character} 루트: 💖 해피엔딩!`);
+} else if (score >= 1) {
+alert(`${character} 루트: 🙂 친구 엔딩.`);
+} else {
+alert(`${character} 루트: 💔 멀어짐 엔딩.`);
+}
+}
