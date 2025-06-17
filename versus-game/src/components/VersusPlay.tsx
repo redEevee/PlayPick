@@ -9,9 +9,11 @@ interface GameStats {
 
 interface VersusPlayProps {
   gameIds?: number[];
+  categoryId?: number;
+  onBackToCategories?: () => void;
 }
 
-const VersusPlay: React.FC<VersusPlayProps> = ({ gameIds }) => {
+const VersusPlay: React.FC<VersusPlayProps> = ({ gameIds, categoryId, onBackToCategories }) => {
   const [currentPair, setCurrentPair] = useState<[GameItem, GameItem] | null>(null);
   const [usedItemIds, setUsedItemIds] = useState<number[]>([]);
   const [stats, setStats] = useState<GameStats>({ totalGames: 0, wins: {} });
@@ -84,7 +86,7 @@ const VersusPlay: React.FC<VersusPlayProps> = ({ gameIds }) => {
   return (
     <div className="versus-play">
       <header className="game-header">
-        <h1> Versus Game</h1>
+        <h1> 가장 최악은 ? </h1>
         <div className="game-info">
           <span>게임 횟수: {stats.totalGames}</span>
 
@@ -154,6 +156,9 @@ const VersusPlay: React.FC<VersusPlayProps> = ({ gameIds }) => {
       <div className="game-instructions">
         <p>💡 두 선택지 중 더 선호하는 것을 클릭하세요!</p>
         <p>🎯 {gameIds && gameIds.length > 0 ? `${gameIds.length}개` : '32개'}의 항목으로 무한히 즐길 수 있습니다.</p>
+        {onBackToCategories && (
+          <button onClick={onBackToCategories}>카테고리 선택 화면으로 돌아가기</button>
+        )}
       </div>
     </div>
   );

@@ -36,7 +36,7 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
       participantCount: 8,
       difficulty: "popular",
       status: "Yes",
-      categoryName: ""
+      categoryName: "가장 최악인 상황은 ?"
     },
     {
       id: 2,
@@ -47,19 +47,19 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
       imageUrl: "/api/placeholder/300/200",
       participantCount: 8,
       difficulty: "Easy",
-      status: "No",
+      status: "Yes",
       categoryName: "스포츠"
     },
     {
       id: 3,
       title: "동물 대결",
-      description: "가장 귀여운 동물을 선택해보세요",
-      icon: "🐱",
-      color: "from-amber-400 to-orange-500",
+      description: "가장 귀여운 동물은?",
+      icon: "🐕",
+      color: "from-orange-400 to-red-500",
       imageUrl: "/api/placeholder/300/200",
       participantCount: 8,
       difficulty: "Easy",
-      status: "No",
+      status: "Yes",
       categoryName: "동물"
     },
     {
@@ -71,7 +71,7 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
       imageUrl: "/api/placeholder/300/200",
       participantCount: 8,
       difficulty: "Easy",
-      status: "No",
+      status: "Yes",
       categoryName: "취미"
     },
     {
@@ -210,7 +210,11 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
         ) : gameStatus === "start" ? (
             <div className="game-screen">
 
-              <VersusPlay gameIds={selectedGameIds.length > 0 ? selectedGameIds : undefined} />
+              <VersusPlay 
+                gameIds={selectedGameIds.length > 0 ? selectedGameIds : undefined}
+                categoryId={selectedCategory || undefined}
+                onBackToCategories={handleBackToCategories}
+              />
             </div>
         ) : (
             <div className="game-end-screen">
