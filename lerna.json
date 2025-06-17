@@ -1,9 +1,0 @@
-{
-  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
-  "version": "independent",
-  "packages": [
-    "main-container",
-    "Landing-Page",
-    "navigation-bar-app"
-  ]
-}

@@ -1,7 +1,7 @@
 import * as path from "node:path";
 import { defineConfig } from "@rspack/cli";
 import { rspack } from "@rspack/core";
-import * as RefreshPlugin from "@rspack/plugin-react-refresh";
+import  RefreshPlugin from "@rspack/plugin-react-refresh";
 import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
 
 
@@ -15,7 +15,7 @@ const targets = ["chrome >= 87", "edge >= 88", "firefox >= 78", "safari >= 14"];
 export default defineConfig({
   context: __dirname,
   entry: {
-    main: "./src/index.tsx",
+    main: "./src/index.ts",
   },
   resolve: {
     extensions: ["...", ".ts", ".tsx", ".jsx"],
@@ -28,7 +28,7 @@ export default defineConfig({
   },
   output: {
     // You need to set a unique value that is not equal to other applications
-    uniqueName: "Landing_Page",
+    uniqueName: "my2nd",
     // publicPath must be configured if using manifest
     publicPath: "http://localhost:3001/",
   },
@@ -45,19 +45,7 @@ export default defineConfig({
       },
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  require("@tailwindcss/postcss"),
-                  require("autoprefixer"),
-                ],
-              },
-            },
-          },
-        ],
+        use: ["postcss-loader"],
         type: "css",
       },
       {
