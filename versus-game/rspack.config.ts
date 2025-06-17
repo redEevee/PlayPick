@@ -1,7 +1,7 @@
 import * as path from "node:path";
 import { defineConfig } from "@rspack/cli";
 import { rspack } from "@rspack/core";
-import  RefreshPlugin from "@rspack/plugin-react-refresh";
+import * as RefreshPlugin from "@rspack/plugin-react-refresh";
 import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
 
 
@@ -15,22 +15,22 @@ const targets = ["chrome >= 87", "edge >= 88", "firefox >= 78", "safari >= 14"];
 export default defineConfig({
   context: __dirname,
   entry: {
-    main: "./src/index.ts",
+    main: "./src/index.tsx",
   },
   resolve: {
     extensions: ["...", ".ts", ".tsx", ".jsx"],
   },
 
   devServer: {
-    port: 3001,
+    port: 3004,
     historyApiFallback: true,
     watchFiles: [path.resolve(__dirname, "src")],
   },
   output: {
     // You need to set a unique value that is not equal to other applications
-    uniqueName: "my2nd",
+    uniqueName: "versus_game",
     // publicPath must be configured if using manifest
-    publicPath: "http://localhost:3001/",
+    publicPath: "http://localhost:3004/",
   },
 
   experiments: {
