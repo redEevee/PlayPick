@@ -1,0 +1,121 @@
+/* src/game/PersonQuizGame.css */
+
+.quiz-container {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  background-color: #fff;
+  font-family: 'Arial', sans-serif;
+}
+
+.person-image {
+  width: 250px;
+  height: 250px;
+  border-radius: 200%; /* 원형 이미지 */
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 3px solid #4CAF50;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+h3 {
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.input-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* 입력 필드와 버튼 사이 간격 */
+}
+
+.answer-input {
+  width: calc(100% - 20px); /* 패딩 고려한 너비 */
+  padding: 12px;
+  font-size: 1.1em;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box; /* 패딩이 너비에 포함되도록 */
+  outline: none; /* 포커스 시 기본 외곽선 제거 */
+  transition: border-color 0.3s ease;
+}
+
+.answer-input:focus {
+  border-color: #4CAF50;
+}
+
+.submit-button,
+.next-button,
+.start-button,
+.restart-button {
+  padding: 12px 25px;
+  font-size: 1.1em;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  min-width: 150px;
+}
+
+.submit-button, .start-button, .next-button {
+    background-color: #4CAF50;
+}
+
+.submit-button:hover, .start-button:hover, .next-button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+.restart-button {
+  background-color: #f44336;
+}
+
+.restart-button:hover {
+  background-color: #da190b;
+  transform: translateY(-2px);
+}
+
+.submit-button:disabled,
+.next-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.feedback-message {
+  margin-top: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.feedback-message.correct {
+  color: #28a745; /* 진한 녹색 */
+  background-color: #e6ffe6;
+}
+
+.feedback-message.wrong {
+  color: #dc3545; /* 진한 빨강 */
+  background-color: #ffe6e6;
+}
+
+.current-score-display,
+.final-score-display {
+  margin-top: 25px;
+  font-size: 1.4em;
+  color: #0056b3;
+  font-weight: bold;
+}
