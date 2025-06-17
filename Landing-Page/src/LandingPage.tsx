@@ -55,7 +55,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
       badge: "GAMER",
       badgeStyle: "badge-teal",
       actionBtn: "action-btn-white",
-      url: "/versus-game",
+      url: "/choices-of-a-spring-day",
       image:"http://localhost:3001/si.jpg"
     }
   ];
