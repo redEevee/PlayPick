@@ -18,8 +18,6 @@ const App = () => (
         <Route path="/" element={<LandingPageApp />} />
         <Route path="/versus-game" element={<VersusGame />} />
         <Route path="/person-quiz-game" element={<PersonQuizGame />} />
-        
-
       </Routes>
     </Suspense>
   </BrowserRouter>

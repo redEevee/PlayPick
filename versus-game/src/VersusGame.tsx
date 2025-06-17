@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./VersusGame.css"
+import "./VersusGame.css";
 
 interface VersusGameProps {
   onBackToLanding: () => void;
@@ -13,23 +13,24 @@ interface VersusCategory {
   color: string;
   imageUrl: string;
   participantCount: number;
-  difficulty: 'Easy' | 'Normal' | 'Hard';
+  difficulty: 'Easy' | 'Normal' | 'Hard' | 'popular';
   status: 'No' | 'Yes';
 }
 
 const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+  const [gameStatus, setGameStatus] = useState("Ready");
 
   const categories: VersusCategory[] = [
     {
       id: 1,
-      title: "K-POP 아이돌",
-      description: "당신의 최애 K-POP 아이돌을 선택해보세요",
-      icon: "🎤",
+      title: "가장 최악의 상황 고르기",
+      description: "어떤 상황이 더 최악일까요",
+      icon: "",
       color: "from-pink-400 to-rose-500",
-      imageUrl: "/api/placeholder/300/200",
+      imageUrl: "http://localhost:3004/slic.jpeg",
       participantCount: 32,
-      difficulty: "Normal",
+      difficulty: "popular",
       status: "Yes"
     },
     {
@@ -122,98 +123,108 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
 
   const handleCategorySelect = (categoryId: number) => {
     setSelectedCategory(categoryId);
-
-
     console.log('게임 시작:', categoryId);
+    setGameStatus("start");
   };
 
   const handleBackToLanding = () => {
-
     onBackToLanding();
   };
 
   return (
-    <div className="landing-container">
+      <div className="landing-container">
+        {gameStatus === "Ready" ? (
+            <main className="main-content">
+              <div className="hero">
+                <h1 className="hero-title">
+                  어떤 <span className="hero-highlight">카테고리</span>에서<br />
+                  <span className="hero-highlight">승부</span>를 겨뤄볼까요?
+                </h1>
+                <p className="versus-description">
+                  vsvsvsvsvsvsvsv svsvsvsvsvs vsvs
+                </p>
+              </div>
 
-      <main className="main-content">
-        <div className="hero">
-          <h1 className="hero-title">
-            어떤 <span className="hero-highlight">카테고리</span>에서<br />
-            <span className="hero-highlight">승부</span>를 겨뤄볼까요?
-          </h1>
-          <p className="versus-description">
-            다양한 주제의 이상형 월드컵에 참여하고 다른 사람들과 취향을 공유해보세요
-          </p>
-        </div>
+              <div className="categories-grid">
+                {categories.map((category) => (
+                    <div
+                        key={category.id}
+                        className={`category-card ${selectedCategory === category.id ? 'selected' : ''}`}
+                        onClick={() => handleCategorySelect(category.id)}
+                    >
+                      <div className="category-card-inner">
+                        <div className="category-header">
+                          <div className="category-badges">
+                      <span className={`difficulty-badge ${getDifficultyColor(category.difficulty)}`}>
+                        {category.difficulty}
+                      </span>
+                            <span className="participant-badge">
+                        {category.participantCount}강
+                      </span>
+                          </div>
+                          <div className="category-icon">
+                            {category.icon}
+                          </div>
+                        </div>
 
-        <div className="categories-grid">
-          {categories.map((category) => (
-            <div
-              key={category.id}
-              className={`category-card ${selectedCategory === category.id ? 'selected' : ''}`}
-              onClick={() => handleCategorySelect(category.id)}
-            >
-              <div className="category-card-inner">
-                <div className="category-header">
-                  <div className="category-badges">
-                    <span className={`difficulty-badge ${getDifficultyColor(category.difficulty)}`}>
-                      {category.difficulty}
-                    </span>
-                    <span className="participant-badge">
-                      {category.participantCount}강
-                    </span>
-                  </div>
-                  <div className="category-icon">
-                    {category.icon}
-                  </div>
-                </div>
+                        {category.status === "Yes" ? (
+                            <div className="category-image">
+                              <img
+                                  src={category.imageUrl}
+                                  alt="category"
+                                  className="w-full h-full object-cover"
+                              />
+                              <div className="image-overlay">
+                                <div className="play-button">
+                                  <span className="start-button text-white">START</span>
+                                </div>
+                              </div>
+                            </div>
+                        ) : (
+                            <div className="non-status">
+                              준 비 중
+                            </div>
+                        )}
 
-                {category.status === "Yes" ? (
-                    <div className={`category-image bg-gradient-to-br ${category.color}`}>
-                      <div className="image-overlay">
-                        <div className="play-button">
-                          <span className="start-buutton"> START </span>
+                        <div className="category-content">
+                          <h3 className="category-title">{category.title}</h3>
+                          <p className="category-description">{category.description}</p>
                         </div>
                       </div>
                     </div>
-                ):(
-
-                   <div className="non-status">
-                     준 비 중
-                   </div>
-                  )}
-
-
-                <div className="category-content">
-                  <h3 className="category-title">{category.title}</h3>
-                  <p className="category-description">{category.description}</p>
-                </div>
-
-
+                ))}
               </div>
+
+              <div className="popular-section">
+                <h2 className="section-title">🔥 인기 카테고리</h2>
+                <div className="popular-cards">
+                  {categories.slice(0, 3).map((category) => (
+                      <div key={category.id} className="popular-card">
+                        <div className="popular-rank">#{category.id}</div>
+                        <div className="popular-info">
+                          <span className="popular-icon">{category.icon}</span>
+                          <span className="popular-title">{category.title}</span>
+                        </div>
+                        <div className="popular-stats">
+                          <span className="play-count">1.2K 플레이</span>
+                        </div>
+                      </div>
+                  ))}
+                </div>
+              </div>
+            </main>
+        ) : gameStatus === "start" ? (
+            <div className="game-screen">
+              <h2>게임 진행 중: 카테고리 ID {selectedCategory}</h2>
+              <button onClick={() => setGameStatus("end")}>게임 끝내기</button>
             </div>
-          ))}
-        </div>
-
-        <div className="popular-section">
-          <h2 className="section-title">🔥 인기 카테고리</h2>
-          <div className="popular-cards">
-            {categories.slice(0, 3).map((category) => (
-              <div key={category.id} className="popular-card">
-                <div className="popular-rank">#{category.id}</div>
-                <div className="popular-info">
-                  <span className="popular-icon">{category.icon}</span>
-                  <span className="popular-title">{category.title}</span>
-                </div>
-                <div className="popular-stats">
-                  <span className="play-count">1.2K 플레이</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </main>
-    </div>
+        ) : (
+            <div className="game-end-screen">
+              <h2>게임이 종료되었습니다!</h2>
+              <button onClick={handleBackToLanding}>처음으로 돌아가기</button>
+            </div>
+        )}
+      </div>
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface LandingPageProps {
   onStartGame: () => void;
@@ -6,6 +7,7 @@ interface LandingPageProps {
 
 const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
   const [currentSlide, setCurrentSlide] = useState(1);
+  const navigate = useNavigate();
 
   const serviceCards = [
     {
@@ -16,7 +18,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
       iconBg: "icon-bg-white",
       badge: "MULTI DRM",
       badgeStyle: "badge-teal",
-      actionBtn: "action-btn-white"
+      actionBtn: "action-btn-white",
+      url: "/versus-game"
     },
     {
       id: 2,
@@ -26,7 +29,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
       iconBg: "icon-bg-gray",
       badge: "FREE PLAN",
       badgeStyle: "badge-white",
-      actionBtn: "action-btn-teal"
+      actionBtn: "action-btn-teal",
+      url: "/versus-game"
     },
     {
       id: 3,
@@ -36,7 +40,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
       iconBg: "icon-bg-white",
       badge: "OS PLAYER",
       badgeStyle: "badge-teal",
-      actionBtn: "action-btn-white"
+      actionBtn: "action-btn-white",
+      url: "/person-quiz-game"
     },
     {
       id: 4,
@@ -46,7 +51,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
       iconBg: "icon-bg-white",
       badge: "OS PLAYER",
       badgeStyle: "badge-teal",
-      actionBtn: "action-btn-white"
+      actionBtn: "action-btn-white",
+      url: "/versus-game"
     }
   ];
 
@@ -92,6 +98,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
               {serviceCards.map((card, index) => (
                 <div
                   key={card.id}
+                  onClick={() => navigate(card.url)}
                   className={`service-card ${card.bgColor} ${
                     currentSlide === card.id
                       ? 'active'
