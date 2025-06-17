@@ -24,6 +24,9 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
   const [gameStatus, setGameStatus] = useState("Ready");
   const [selectedGameIds, setSelectedGameIds] = useState<number[]>([]);
+  const [showRoundModal, setShowRoundModal] = useState(false);
+  const [selectedRound, setSelectedRound] = useState<number>(4);
+  const [currentCategory, setCurrentCategory] = useState<VersusCategory | null>(null);
 
   const categories: VersusCategory[] = [
     {
@@ -47,7 +50,7 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
       imageUrl: "/api/placeholder/300/200",
       participantCount: 8,
       difficulty: "Easy",
-      status: "Yes",
+      status: "No",
       categoryName: "스포츠"
     },
     {
@@ -59,7 +62,7 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
       imageUrl: "/api/placeholder/300/200",
       participantCount: 8,
       difficulty: "Easy",
-      status: "Yes",
+      status: "No",
       categoryName: "동물"
     },
     {
@@ -71,7 +74,7 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
       imageUrl: "/api/placeholder/300/200",
       participantCount: 8,
       difficulty: "Easy",
-      status: "Yes",
+      status: "No",
       categoryName: "취미"
     },
     {
@@ -98,21 +101,42 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
     }
   };
 
+  const roundOptions = [
+    { value: 4, label: '4강' },
+    { value: 8, label: '8강' }
+  ];
+
   const handleCategorySelect = (categoryId: number) => {
     const selectedCat = categories.find(cat => cat.id === categoryId);
     if (!selectedCat || selectedCat.status === "No") return;
     
-    setSelectedCategory(categoryId);
+    setCurrentCategory(selectedCat);
+    setShowRoundModal(true);
+  };
+
+  const handleRoundSelect = (round: number) => {
+    setSelectedRound(round);
+  };
+
+  const handleStartGame = () => {
+    if (!currentCategory) return;
     
-    if (selectedCat.categoryName === "전체") {
+    setSelectedCategory(currentCategory.id);
+    
+    if (currentCategory.categoryName === "전체") {
       setSelectedGameIds([]);
-    } else if (selectedCat.categoryName) {
-      const ids = getCategoryIds(selectedCat.categoryName);
+    } else if (currentCategory.categoryName) {
+      const ids = getCategoryIds(currentCategory.categoryName);
       setSelectedGameIds(ids);
     }
     
-    console.log('게임 시작:', categoryId, selectedCat.categoryName);
+    setShowRoundModal(false);
     setGameStatus("start");
+  };
+
+  const handleCloseModal = () => {
+    setShowRoundModal(false);
+    setCurrentCategory(null);
   };
 
   const handleBackToCategories = () => {
@@ -213,6 +237,7 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
               <VersusPlay 
                 gameIds={selectedGameIds.length > 0 ? selectedGameIds : undefined}
                 categoryId={selectedCategory || undefined}
+                selectedRound={selectedRound}
                 onBackToCategories={handleBackToCategories}
               />
             </div>
@@ -221,6 +246,27 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
               <h2>게임이 종료되었습니다!</h2>
               <button onClick={handleBackToLanding}>처음으로 돌아가기</button>
             </div>
+        )}
+        
+        {showRoundModal && (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <h2 className="modal-title">몇 강을 할까요?</h2>
+              <div className="round-options">
+                {roundOptions.map((option) => (
+                  <button
+                    key={option.value}
+                    className={`round-button ${selectedRound === option.value ? 'selected' : ''}`}
+                    onClick={() => handleRoundSelect(option.value)}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+              <button className="start-button" onClick={handleStartGame}>시작하기</button>
+              <button className="close-button" onClick={handleCloseModal}>닫기</button>
+            </div>
+          </div>
         )}
       </div>
   );

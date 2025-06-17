@@ -31,7 +31,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
       badge: "GAME",
       badgeStyle: "badge-white",
       actionBtn: "action-btn-teal",
-      url: "/versus-game",
+      url: "/spot-the-difference",
       image:"http://localhost:3001/diff.jpeg"
     },
     {
@@ -74,7 +74,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
 
       <main className="main-content">
         <div className="hero">
-          <p className="hero-subtitle">어1111</p>
           <h1 className="hero-title">
             원하는 모든 오락 컨텐츠
           </h1>
@@ -84,8 +83,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
           </h2>
 
           <div className="hero-actions">
-            <button className="btn btn-primary" onClick={onStartGame}>무료로 시작하기</button>
-            <button className="btn btn-outline">야삐</button>
+
           </div>
         </div>
 
