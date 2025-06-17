@@ -1,17 +1,22 @@
 import React from 'react';
 import './navbar.css';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
+  const navigate = useNavigate();
   return (
       <div className="Navbar">
         <header className="header">
           <div className="header-content">
             <div className="logo-section">
               <div className="logo">
-                <div className="logo-icon">
-                  <span>FJ</span>
+                <div className="logo-icon" onClick={() => navigate("/")}>
+                  <img src={"http://localhost:3002/Logo.png"}
+
+                    style={{width:"100%", height:"100%"}}
+
+                  />
                 </div>
-                <span className="logo-text">+ WELLCOME</span>
               </div>
               <nav className="nav">
                 <a href="#" className="nav-link">Vs게임</a>
