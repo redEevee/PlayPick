@@ -38,35 +38,6 @@ body {
 
 
 
-.logo-section {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.logo-icon {
-  width: 32px;
-  height: 32px;
-  background: black;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.logo-text {
-  color: #6b7280;
-  font-size: 14px;
-}
 
 .nav {
   display: flex;

@@ -11,7 +11,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.start-buutton{
+
+.start-button {
   font-size: 20px;
   font-weight: bold;
 }
@@ -40,103 +41,6 @@ body {
   background: linear-gradient(to bottom, #f0fdfa, #e0f2fe);
 }
 
-
-
-.logo-section {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.logo-icon {
-  width: 32px;
-  height: 32px;
-  background: black;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.logo-text {
-  color: #6b7280;
-  font-size: 14px;
-}
-
-.nav {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-link {
-  color: #374151;
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.2s;
-}
-
-
-
-
-
-.language-select {
-  font-size: 14px;
-  color: #6b7280;
-  border: none;
-  background: transparent;
-}
-
-.btn {
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.btn-primary {
-  background: #14b8a6;
-  color: white;
-  border: none;
-}
-
-.btn-primary:hover {
-  background: #0d9488;
-}
-
-.btn-secondary {
-  background: transparent;
-  color: #374151;
-  border: 1px solid #d1d5db;
-}
-
-.btn-secondary:hover {
-  background: #f9fafb;
-}
-
-.btn-outline {
-  background: #ccfbf1;
-  color: #0f766e;
-  border: 1px solid #5eead4;
-}
-
-.btn-outline:hover {
-  background: #99f6e4;
-}
-
 .main-content {
   max-width: 1200px;
   margin: 0 auto;
@@ -146,12 +50,6 @@ body {
 .hero {
   text-align: center;
   margin-bottom: 4rem;
-}
-
-.hero-subtitle {
-  color: #14b8a6;
-  font-size: 14px;
-  margin-bottom: 1rem;
 }
 
 .hero-title {
@@ -166,252 +64,6 @@ body {
   color: #14b8a6;
 }
 
-.hero-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 3rem;
-}
-
-.carousel-container {
-  position: relative;
-}
-
-.carousel-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  overflow: hidden;
-}
-
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  background: white;
-  border: none;
-  border-radius: 50%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  transition: background 0.2s;
-}
-
-.carousel-btn:hover {
-  background: #f9fafb;
-}
-
-.carousel-btn.prev {
-  left: 0;
-}
-
-.carousel-btn.next {
-  right: 0;
-}
-
-.cards-container {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.service-card {
-  width: 320px;
-  height: 384px;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: all 0.3s;
-  position: relative;
-}
-
-.service-card.active {
-  transform: scale(1.05);
-  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
-}
-
-.service-card.inactive {
-  transform: scale(0.95);
-  opacity: 0.7;
-}
-
-.card-teal {
-  background: linear-gradient(135deg, #2dd4bf, #14b8a6);
-  color: white;
-}
-
-.card-white {
-  background: white;
-  color: #111827;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-}
-
-.card-blue {
-  background: linear-gradient(135deg, #60a5fa, #3b82f6);
-  color: white;
-}
-
-.card-badge {
-  font-size: 12px;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  display: inline-block;
-  margin-bottom: 1rem;
-}
-
-.badge-teal {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-}
-
-.badge-white {
-  background: #ccfbf1;
-  color: #0f766e;
-}
-
-.card-icon-area {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-}
-
-.card-icon-container {
-  width: 192px;
-  height: 128px;
-  border-radius: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.icon-bg-white {
-  background: white;
-}
-
-.icon-bg-gray {
-  background: #f3f4f6;
-}
-
-.card-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.card-title {
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 1.4;
-  white-space: pre-line;
-}
-
-.card-description {
-  font-size: 14px;
-  line-height: 1.5;
-  white-space: pre-line;
-  opacity: 0.8;
-}
-
-.card-action-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.card-action-btn:hover {
-  transform: scale(1.1);
-}
-
-.action-btn-teal {
-  background: #14b8a6;
-  color: white;
-}
-
-.action-btn-white {
-  background: white;
-  color: #14b8a6;
-}
-
-.carousel-indicators {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 2rem;
-}
-
-.indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.indicator.active {
-  background: #14b8a6;
-}
-
-.indicator.inactive {
-  background: #d1d5db;
-}
-
-/* Test styles */
-.test-bg-blue {
-  background: #3b82f6;
-  color: white;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.test-bg-red {
-  background: #fef2f2;
-  padding: 1rem;
-}
-
-@media (max-width: 768px) {
-  .nav {
-    display: none;
-  }
-  
-  .hero-title {
-    font-size: 2rem;
-  }
-  
-  .cards-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .carousel-btn {
-    display: none;
-  }
-}
-
-/* VersusGame Styles */
 .versus-description {
   font-size: 1.1rem;
   color: #6b7280;
@@ -449,12 +101,23 @@ body {
   box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.1);
 }
 
+.category-card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .category-card-inner {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
 
 .category-badges {
   display: flex;
@@ -469,6 +132,46 @@ body {
   font-weight: 600;
 }
 
+.bg-green-100 {
+  background: #dcfce7;
+}
+
+.text-green-800 {
+  color: #166534;
+}
+
+.bg-yellow-100 {
+  background: #fef3c7;
+}
+
+.text-yellow-800 {
+  color: #92400e;
+}
+
+.bg-red-100 {
+  background: #fee2e2;
+}
+
+.text-red-800 {
+  color: #991b1b;
+}
+
+.bg-purple-100 {
+  background: #f3e8ff;
+}
+
+.text-purple-800 {
+  color: #6b21a8;
+}
+
+.bg-gray-100 {
+  background: #f3f4f6;
+}
+
+.text-gray-800 {
+  color: #1f2937;
+}
+
 .participant-badge {
   font-size: 12px;
   padding: 0.25rem 0.75rem;
@@ -478,28 +181,30 @@ body {
   font-weight: 600;
 }
 
+.category-icon {
+  font-size: 2rem;
+}
 
 .category-image {
   width: 100%;
-  height: 100%;
+  height: 200px;
   position: relative;
   overflow: hidden;
   border-radius: 1rem;
   margin-bottom: 1.5rem;
 }
+
 .category-image img {
-  background-color: transparent;
   width: 100%;
   height: 100%;
   object-fit: contain;
   border-radius: 1rem;
 }
 
-
 .image-overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.4); /* 어두운 오버레이 */
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -512,14 +217,13 @@ body {
   opacity: 1;
 }
 
-.non-status{
+.non-status {
   font-size: 50px;
   font-weight: bold;
   color: #434343;
   margin: auto;
   margin-top: 50px;
   margin-bottom: 70px;
-
 }
 
 .play-button {
@@ -562,40 +266,6 @@ body {
   line-height: 1.5;
 }
 
-.category-action {
-  margin-top: auto;
-}
-
-.start-game-btn {
-  width: 100%;
-  background: #14b8a6;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: all 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.start-game-btn:hover {
-  background: #0d9488;
-  transform: translateY(-2px);
-}
-
-.btn-arrow {
-  transition: transform 0.3s;
-}
-
-.start-game-btn:hover .btn-arrow {
-  transform: translateX(4px);
-}
-
 .popular-section {
   margin-top: 4rem;
   padding: 2rem 0;
@@ -627,6 +297,7 @@ body {
   min-width: 280px;
   transition: all 0.3s;
   border: 1px solid #f3f4f6;
+  cursor: pointer;
 }
 
 .popular-card:hover {
@@ -675,41 +346,49 @@ body {
   border-radius: 9999px;
 }
 
-/* Gradient backgrounds for categories */
-.from-pink-400 {
-  background: linear-gradient(135deg, #f472b6, #ec4899);
+.game-screen {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f0fdfa, #e0f2fe);
 }
 
-.from-purple-400 {
-  background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+.game-end-screen {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f0fdfa, #e0f2fe);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 
-.from-amber-400 {
-  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+.game-end-screen h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #111827;
 }
 
-.from-green-400 {
-  background: linear-gradient(135deg, #4ade80, #10b981);
+.game-end-screen button {
+  padding: 1rem 2rem;
+  background: #14b8a6;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-.from-blue-400 {
-  background: linear-gradient(135deg, #60a5fa, #3b82f6);
-}
-
-.from-gray-400 {
-  background: linear-gradient(135deg, #9ca3af, #6b7280);
-}
-
-.from-violet-400 {
-  background: linear-gradient(135deg, #a78bfa, #7c3aed);
-}
-
-.from-rose-400 {
-  background: linear-gradient(135deg, #fb7185, #e11d48);
+.game-end-screen button:hover {
+  background: #0d9488;
 }
 
 /* Responsive design for VersusGame */
 @media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
   .categories-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
