@@ -1,9 +1,10 @@
 import React from 'react';
+import VersusGame from "./VersusGame.tsx";
 
 function App() {
   return (
-    <div className="App">
-      123
+    <div className="TotalBox">
+      <VersusGame />
     </div>
   );
 }

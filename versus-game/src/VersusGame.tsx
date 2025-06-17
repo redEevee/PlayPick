@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "./VersusGame.css"
 
 interface VersusGameProps {
   onBackToLanding: () => void;
@@ -13,6 +14,7 @@ interface VersusCategory {
   imageUrl: string;
   participantCount: number;
   difficulty: 'Easy' | 'Normal' | 'Hard';
+  status: 'No' | 'Yes';
 }
 
 const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
@@ -27,7 +29,8 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
       color: "from-pink-400 to-rose-500",
       imageUrl: "/api/placeholder/300/200",
       participantCount: 32,
-      difficulty: "Normal"
+      difficulty: "Normal",
+      status: "Yes"
     },
     {
       id: 2,
@@ -37,7 +40,8 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
       color: "from-purple-400 to-indigo-500",
       imageUrl: "/api/placeholder/300/200",
       participantCount: 16,
-      difficulty: "Easy"
+      difficulty: "Easy",
+      status: "No"
     },
     {
       id: 3,
@@ -47,7 +51,8 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
       color: "from-amber-400 to-orange-500",
       imageUrl: "/api/placeholder/300/200",
       participantCount: 32,
-      difficulty: "Hard"
+      difficulty: "Hard",
+      status: "No"
     },
     {
       id: 4,
@@ -57,7 +62,8 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
       color: "from-green-400 to-emerald-500",
       imageUrl: "/api/placeholder/300/200",
       participantCount: 16,
-      difficulty: "Easy"
+      difficulty: "Easy",
+      status: "No"
     },
     {
       id: 5,
@@ -67,7 +73,8 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
       color: "from-blue-400 to-cyan-500",
       imageUrl: "/api/placeholder/300/200",
       participantCount: 32,
-      difficulty: "Normal"
+      difficulty: "Normal",
+      status: "No"
     },
     {
       id: 6,
@@ -77,7 +84,8 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
       color: "from-gray-400 to-slate-500",
       imageUrl: "/api/placeholder/300/200",
       participantCount: 16,
-      difficulty: "Hard"
+      difficulty: "Hard",
+      status: "No"
     },
     {
       id: 7,
@@ -87,7 +95,8 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
       color: "from-violet-400 to-purple-500",
       imageUrl: "/api/placeholder/300/200",
       participantCount: 32,
-      difficulty: "Normal"
+      difficulty: "Normal",
+      status: "No"
     },
     {
       id: 8,
@@ -97,7 +106,8 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
       color: "from-rose-400 to-pink-500",
       imageUrl: "/api/placeholder/300/200",
       participantCount: 16,
-      difficulty: "Hard"
+      difficulty: "Hard",
+      status: "No"
     }
   ];
 
@@ -112,40 +122,21 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
 
   const handleCategorySelect = (categoryId: number) => {
     setSelectedCategory(categoryId);
-    // 여기서 실제 게임 시작 로직 구현
+
+
     console.log('게임 시작:', categoryId);
   };
 
   const handleBackToLanding = () => {
-    // 랜딩 페이지로 돌아가기
+
     onBackToLanding();
   };
 
   return (
     <div className="landing-container">
-      {/* Header */}
-      <header className="header">
-        <div className="header-content">
-          <div className="logo-section">
-            <button onClick={handleBackToLanding} className="logo">
-              <div className="logo-icon">
-                <span>PP</span>
-              </div>
-              <span className="logo-text">PlayPick</span>
-            </button>
-          </div>
-          <div className="header-actions">
-            <button className="btn btn-secondary">랭킹</button>
-            <button className="btn btn-primary">내 기록</button>
-          </div>
-        </div>
-      </header>
 
-      {/* Main Content */}
       <main className="main-content">
-        {/* Hero Section */}
         <div className="hero">
-          <div className="hero-subtitle">🏆 이상형 월드컵</div>
           <h1 className="hero-title">
             어떤 <span className="hero-highlight">카테고리</span>에서<br />
             <span className="hero-highlight">승부</span>를 겨뤄볼까요?
@@ -155,7 +146,6 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
           </p>
         </div>
 
-        {/* Categories Grid */}
         <div className="categories-grid">
           {categories.map((category) => (
             <div
@@ -164,7 +154,6 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
               onClick={() => handleCategorySelect(category.id)}
             >
               <div className="category-card-inner">
-                {/* Card Header */}
                 <div className="category-header">
                   <div className="category-badges">
                     <span className={`difficulty-badge ${getDifficultyColor(category.difficulty)}`}>
@@ -179,34 +168,33 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
                   </div>
                 </div>
 
-                {/* Card Image */}
-                <div className={`category-image bg-gradient-to-br ${category.color}`}>
-                  <div className="image-overlay">
-                    <div className="play-button">
-                      <span>▶</span>
+                {category.status === "Yes" ? (
+                    <div className={`category-image bg-gradient-to-br ${category.color}`}>
+                      <div className="image-overlay">
+                        <div className="play-button">
+                          <span className="start-buutton"> START </span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                ):(
 
-                {/* Card Content */}
+                   <div className="non-status">
+                     준 비 중
+                   </div>
+                  )}
+
+
                 <div className="category-content">
                   <h3 className="category-title">{category.title}</h3>
                   <p className="category-description">{category.description}</p>
                 </div>
 
-                {/* Card Action */}
-                <div className="category-action">
-                  <button className="start-game-btn">
-                    게임 시작하기
-                    <span className="btn-arrow">→</span>
-                  </button>
-                </div>
+
               </div>
             </div>
           ))}
         </div>
 
-        {/* Popular Categories */}
         <div className="popular-section">
           <h2 className="section-title">🔥 인기 카테고리</h2>
           <div className="popular-cards">
