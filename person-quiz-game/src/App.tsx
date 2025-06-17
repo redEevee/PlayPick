@@ -11,12 +11,12 @@ function App() {
       <header style={{
         textAlign: 'center',
         padding: '20px',
-        backgroundColor: '#282c34',
-        color: 'white',
+        backgroundColor: '14b8a6',
+        color: '14b8a6',
         fontSize: 'calc(10px + 2vmin)',
         marginBottom: '30px'
       }}>
-        <h1>인물 퀴즈 챌린지</h1>
+        <div className=""><h1 className="text-black font-bold">인물 퀴즈 챌린지</h1></div>
       </header>
       <main>
         <PersonQuizGame />
