@@ -4,6 +4,31 @@ It's for PlayPick
 ---
 ## 👤 팀원 구성
 
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-9353"><span style="font-weight:bold">**최현수**</span></th>
+    <th class="tg-9353"><span style="font-weight:bold">**김정민**</span></th>
+    <th class="tg-9353"><span style="font-weight:bold">**이신원**</span></th>
+    <th class="tg-9353"><span style="font-weight:bold">**전지연**</span></th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-9353"><img src="https://cdn.discordapp.com/attachments/1383999022238273586/1384715997809741945/image.png?ex=685370c4&is=68521f44&hm=a179a00ce94ed8a5958c96b23ad7bffe5b7f4daddb69ae2b87bd6bc187ef71f8&" alt="Image" width="109" height="100"></td>
+    <td class="tg-9353"></td>
+    <td class="tg-9353"><br><img src="https://mblogthumb-phinf.pstatic.net/MjAxNzExMTNfOTkg/MDAxNTEwNTE5MDU1OTAx.CgrsefuknGH3WyTiveT8LsFGXw288baNiov22l9sCywg.x3YtB2I7VXitiMcvgOkRkiH5umtLrNWj7IothphFwF0g.PNG.211grims/136.png?type=w800" alt="Image" width="109" height="100"></td>
+    <td class="tg-9353"><img src="https://cdn.discordapp.com/attachments/1383999022238273586/1384715530136715366/1750066148038.jpg?ex=68537055&is=68521ed5&hm=74fb22315aca7246b65fbf04678837fb854606ec610d37f84029ecbba24a583b&" alt="Image" width="109" height="100"></td>
+  </tr>
+  <tr>
+    <td class="tg-7btt"><a href="https://github.com/IMCODER0000" target="_blank" rel="noopener noreferrer">GitHub</a></td>
+    <td class="tg-7btt"><a href="https://github.com/Mur-pixel" target="_blank" rel="noopener noreferrer">GitHub</a></td>
+    <td class="tg-9353"><a href="https://github.com/redEevee" target="_blank" rel="noopener noreferrer">GitHub</a></td>
+    <td class="tg-7btt"><a href="https://github.com/dia0723" target="_blank" rel="noopener noreferrer">GitHub</a></td>
+  </tr>
+</tbody></table>
+  
+  
+</div>
+
 ---
 
 ## 🧩 구조 설명
