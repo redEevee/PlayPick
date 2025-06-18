@@ -216,7 +216,7 @@ const VersusPlay: React.FC<VersusPlayProps> = ({ gameIds, categoryId, selectedRo
             <div className="item-info">
               <h3 className="item-name">{leftItem.name}</h3>
               <p className="item-description">{leftItem.description}</p>
-              <div className="item-category">{leftItem.category}</div>
+              {/*<div className="item-category">{leftItem.category}</div>*/}
             </div>
           </div>
           <div className="card-overlay">
@@ -240,7 +240,7 @@ const VersusPlay: React.FC<VersusPlayProps> = ({ gameIds, categoryId, selectedRo
             <div className="item-info">
               <h3 className="item-name">{rightItem.name}</h3>
               <p className="item-description">{rightItem.description}</p>
-              <div className="item-category">{rightItem.category}</div>
+              {/*<div className="item-category">{rightItem.category}</div>*/}
             </div>
           </div>
           <div className="card-overlay">
