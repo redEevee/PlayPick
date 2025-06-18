@@ -244,4 +244,9 @@ h3 {
     min-width: unset;
     width: 100%;
   }
+
+  .landing-container {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #f0fdfa, #e0f2fe);
+}
 }

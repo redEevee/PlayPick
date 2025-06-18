@@ -14,7 +14,7 @@ export const gameDatasets: GameItem[][] = [
     { id: 2, name: "친구한테 상사 뒷담화 했는데 알고보니 상사에게 보냈다",
       image: "http://localhost:3004/drink.jpg", description: "미국의 대표 패스트푸드", category: "가장 최악인 상황은 ?" },
     { id: 3, name: "고백하고 거절당했는데, 그 장면이 몰카 유튜브로 올라감 ",
-      image: "http://localhost:3004/yotue.jpg", description: "그런데 조회수가 40만", category: "가장 최악인 상황은 ?" },
+      image: "http://localhost:3004/yotube.jpg", description: "그런데 조회수가 40만", category: "가장 최악인 상황은 ?" },
     { id: 4, name: "3시간 웨이팅 줄 섰는데 알고보니 다른 줄",
       image: "http://localhost:3004/line.jpg", description: "이탈리아의 면 요리", category: "가장 최악인 상황은 ?" },
     { id: 5, name: "화상 회의중 화면과 마이크 다 끈 상황 노래부르며 물을 가져 왔는데 마이크와 캠이 켜져있음",
@@ -22,7 +22,7 @@ export const gameDatasets: GameItem[][] = [
     { id: 6, name: "중요한 프레젠테이션 중에 PPT에 직장 상사 험담 적어놓은게 나옴",
       image: "http://localhost:3004/ppt.jpg", description: "한국의 인기 인스턴트 음식", category: "가장 최악인 상황은 ?" },
     { id: 7, name: "회식 자리에서 모두 다 보는 앞에서 진지하게 공개 고백 받음",
-      image: "http://localhost:3004/public.jpg", description: "바삭한 닭고기 요리", category: "가장 최악인 상황은 ?" },
+      image: "http://localhost:3004/public2.jpg", description: "바삭한 닭고기 요리", category: "가장 최악인 상황은 ?" },
     { id: 8, name: "소개팅 너무 좋았는데 집 와보니 이에 엄청 큰 고추가루가,,,",
       image: "http://localhost:3004/go.jpg", description: "고급 쇠고기 요리", category: "가장 최악인 상황은 ?" },
   ],
@@ -37,7 +37,6 @@ export const gameDatasets: GameItem[][] = [
     { id: 16, name: "스키", image: "🎿", description: "겨울 스포츠", category: "스포츠" },
   ],
   [
-    // 동물 카테고리
     { id: 17, name: "강아지", image: "🐕", description: "인간의 가장 친한 친구", category: "동물" },
     { id: 18, name: "고양이", image: "🐱", description: "독립적인 애완동물", category: "동물" },
     { id: 19, name: "사자", image: "🦁", description: "백수의 왕", category: "동물" },
@@ -48,7 +47,6 @@ export const gameDatasets: GameItem[][] = [
     { id: 24, name: "토끼", image: "🐰", description: "빠르게 뛰는 귀여운 동물", category: "동물" },
   ],
   [
-    // 취미 카테고리
     { id: 25, name: "독서", image: "📚", description: "지식을 쌓는 활동", category: "취미" },
     { id: 26, name: "영화감상", image: "🎬", description: "스크린을 통한 즐거움", category: "취미" },
     { id: 27, name: "게임", image: "🎮", description: "디지털 엔터테인먼트", category: "취미" },
