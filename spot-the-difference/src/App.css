@@ -10,7 +10,9 @@
 
 .title {
     text-align: center;
-    font-family: "Noto Sans KR";
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 .subtitle {
