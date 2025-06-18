@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+.logo-img {
+  width: 90px;
+  height: 90%;
+}
+
 body {
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -44,8 +49,9 @@ body {
 .header-content {
   height: 90%;
   background-color: white;
-  max-width: 1200px;
-  width: 90%;
+  max-width: 1600px;
+  /*min-height: 80px;*/
+  width: 80%;
   border: 2px solid #ededed;
   border-radius: 20px;
   margin: 0 auto;
@@ -69,9 +75,7 @@ body {
 }
 
 .logo-icon {
-  width: 80px;
-  height: 60px;
-  border-radius: 40px;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -114,6 +118,7 @@ body {
   color: #374151;
   text-decoration: none;
   font-size: 14px;
+  font-weight: bold !important;
   transition: all 0.3s ease;
   padding: 8px 16px;
   border-radius: 8px;
@@ -508,6 +513,13 @@ body {
 .test-bg-red {
   background: #fef2f2;
   padding: 1rem;
+}
+
+@media (max-height: 768px) {
+  .logo-img {
+    width: 55px;
+    height: 38px;
+  }
 }
 
 @media (max-width: 768px) {
