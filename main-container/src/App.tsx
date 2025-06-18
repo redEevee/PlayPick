@@ -10,6 +10,7 @@ const VersusGame = lazy(() => import("VersusGame/App"));
 const PersonQuizGame = lazy(() => import("PersonQuizGame/App"));
 const ChoicesOfASpringDay = lazy(() => import("choicesOfASpringDay/App"));
 const SpotTheDifference = lazy(() => import("spotTheDifference/App"));
+const AuthenticationApp = lazy(() => import("AuthenticationApp/App"));
 
 
 const App = () => (
@@ -22,6 +23,7 @@ const App = () => (
         <Route path="/person-quiz-game" element={<PersonQuizGame />} />
         <Route path="/choices-of-a-spring-day" element={<ChoicesOfASpringDay />} />
         <Route path="/spot-the-difference" element={<SpotTheDifference />} />
+        <Route path="/authentication-app" element={<AuthenticationApp />} />
       </Routes>
     </Suspense>
   </BrowserRouter>

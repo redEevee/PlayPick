@@ -8,7 +8,8 @@
     "versus-game",
     "person-quiz-game",
     "choices-of-a-spring-day",
-    "spot-the-difference"
+    "spot-the-difference",
+    "authentication-app"
   ],
   "scripts": {
     "start": "lerna run start --parallel"
