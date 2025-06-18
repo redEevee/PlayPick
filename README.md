@@ -1,23 +1,12 @@
 # PlayPick
 It's for PlayPick
 <!DOCTYPE html>
-<html lang="ko">
-<head>
+
+
   <meta charset="UTF-8" />
   <title>PlayPick 프로젝트 구조</title>
-  <style>
-    body {
-      font-family: monospace, monospace;
-      white-space: pre;
-      background: #f9f9f9;
-      padding: 20px;
-    }
-    .folder {
-      color: #1a73e8;
-    }
-    .file {
-      color: #333;
-    }
+
+
   </style>
 </head>
 <body>
