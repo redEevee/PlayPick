@@ -22,7 +22,7 @@ const SimulationGame: React.FC = () => {
     {
       id: 0,
       text: "봄날의 공원에서 길을 걷고 있던 당신, 갑자기 이상한 고양이를 만났습니다.",
-      background: "http://localhost:3006/cat.jpg",
+      background: "http://localhost:3006/cat.PNG",
       choices: [
         { text: "고양이를 따라간다", next: 1 },
         { text: "무시하고 지나간다", next: 99 }

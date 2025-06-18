@@ -25,7 +25,6 @@ const VersusPlay: React.FC<VersusPlayProps> = ({ gameIds, categoryId, selectedRo
   const [filteredDatasets, setFilteredDatasets] = useState<GameItem[]>([]);
   const [gameItems, setGameItems] = useState<GameItem[]>([]);
   
-  // 토너먼트 관련 상태
   const [tournamentRounds, setTournamentRounds] = useState<GameItem[][]>([]);
   const [currentRoundIndex, setCurrentRoundIndex] = useState(0);
   const [currentMatchIndex, setCurrentMatchIndex] = useState(0);
@@ -34,15 +33,12 @@ const VersusPlay: React.FC<VersusPlayProps> = ({ gameIds, categoryId, selectedRo
   const [champion, setChampion] = useState<GameItem | null>(null);
 
   const navigate = useNavigate();
-  // 게임 완료 여부 확인
   const isComplete = isGameComplete && champion;
 
-  // 라운드에 따라 필요한 아이템 개수 계산 (4강 = 8개, 8강 = 16개)
   const getRequiredItemCount = (round: number) => {
     return round === 4 ? 8 : 16;
   };
 
-  // 토너먼트 초기화
   const initializeTournament = (items: GameItem[]) => {
     const shuffledItems = [...items].sort(() => Math.random() - 0.5);
     setTournamentRounds([shuffledItems]);
@@ -52,7 +48,6 @@ const VersusPlay: React.FC<VersusPlayProps> = ({ gameIds, categoryId, selectedRo
     setIsGameComplete(false);
     setChampion(null);
     
-    // 첫 번째 매치 설정
     if (shuffledItems.length >= 2) {
       setCurrentPair([shuffledItems[0], shuffledItems[1]]);
     }
@@ -63,7 +58,6 @@ const VersusPlay: React.FC<VersusPlayProps> = ({ gameIds, categoryId, selectedRo
     
     if (gameIds && gameIds.length > 0) {
       const filtered = getFilteredDatasets(gameIds);
-      // 필요한 개수만큼만 아이템 선택
       const selectedItems = filtered.slice(0, requiredCount);
       setFilteredDatasets(selectedItems);
       setGameItems(selectedItems);
@@ -72,7 +66,6 @@ const VersusPlay: React.FC<VersusPlayProps> = ({ gameIds, categoryId, selectedRo
         initializeTournament(selectedItems);
       }
     } else {
-      // 전체 카테고리에서 필요한 개수만큼 선택
       const allItems = getAllItems();
       const selectedItems = allItems.slice(0, requiredCount);
       setGameItems(selectedItems);
@@ -97,35 +90,28 @@ const VersusPlay: React.FC<VersusPlayProps> = ({ gameIds, categoryId, selectedRo
 
       setGameHistory(prev => [...prev, { winner, loser }]);
       
-      // 승자를 winners 배열에 추가
       const newWinners = [...winners, winner];
       setWinners(newWinners);
       
       const currentRound = tournamentRounds[currentRoundIndex];
-      const nextMatchIndex = currentMatchIndex + 2; // 다음 매치는 2개씩 건너뛰기
+      const nextMatchIndex = currentMatchIndex + 2;
       
-      // 현재 라운드의 모든 매치가 끝났는지 확인
       if (nextMatchIndex >= currentRound.length) {
-        // 현재 라운드 완료
         if (newWinners.length === 1) {
-          // 토너먼트 완료 - 챔피언 결정
           setChampion(newWinners[0]);
           setIsGameComplete(true);
           setCurrentPair(null);
         } else {
-          // 다음 라운드로 진행 - 승자들로 새로운 라운드 구성
           setTournamentRounds(prev => [...prev, newWinners]);
           setCurrentRoundIndex(prev => prev + 1);
           setCurrentMatchIndex(0);
           setWinners([]);
           
-          // 다음 라운드 첫 매치 설정
           if (newWinners.length >= 2) {
             setCurrentPair([newWinners[0], newWinners[1]]);
           }
         }
       } else {
-        // 같은 라운드 내 다음 매치
         setCurrentMatchIndex(nextMatchIndex);
         if (nextMatchIndex + 1 < currentRound.length) {
           setCurrentPair([currentRound[nextMatchIndex], currentRound[nextMatchIndex + 1]]);
@@ -158,17 +144,28 @@ const VersusPlay: React.FC<VersusPlayProps> = ({ gameIds, categoryId, selectedRo
 
   if (isGameComplete && champion) {
     return (
-      <div className="versus-play">
-        <div className="game-complete">
-          <h2>🏆 게임 완료!</h2>
-          <div className="champion-container">
-            <img src={champion.image} alt={champion.name} className="champion-image" />
-            <h3 className="champion-name">{champion.name}</h3>
-            <p className="champion-description">{champion.description}</p>
+      // <div className="versus-play">
+      //
+      //       <h3 className="champion-name">{champion.name}</h3>
+      //       <p className="champion-description">{champion.description}</p>
+      //     <button onClick={resetGame}>Home</button>
+      // </div>
+        <div className="winner-card-box">
+          <div className="winner-card">
+            <div className="card-content">
+              <div className="item-image-container">
+                <img src={champion.image} className="winner-image"/>
+              </div>
+              <div className="item-info">
+                <h3 className="item-name">{champion.name}</h3>
+                <p className="item-description">{champion.description}</p>
+              </div>
+              <div className="home-button-box">
+                <div className="home-button" onClick={()=> window.location.href = "/versus-game"}>Home</div>
+              </div>
+            </div>
           </div>
-          <button onClick={resetGame}>게임종료</button>
         </div>
-      </div>
     );
   }
 
@@ -179,7 +176,7 @@ const VersusPlay: React.FC<VersusPlayProps> = ({ gameIds, categoryId, selectedRo
   const [leftItem, rightItem] = currentPair;
 
   return (
-    <div className="versus-play">
+      <div className="versus-play">
       <header className="game-header">
         <h1> 가장 최악은 ? </h1>
         <div className="game-info">

@@ -251,7 +251,7 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
         {showRoundModal && (
           <div className="modal-overlay">
             <div className="modal-content">
-              <h2 className="modal-title">몇 강을 할까요?</h2>
+              <h2 className="modal-title">Game</h2>
               <div className="round-options">
                 {roundOptions.map((option) => (
                   <button
