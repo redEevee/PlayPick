@@ -4,6 +4,8 @@ import image01_01 from "../assets/image01_01.jpg";
 import image01_02 from "../assets/image01_02.jpg";
 import image02_01 from "../assets/image02_01.jpg";
 import image02_02 from "../assets/image02_02.jpg";
+import image03_01 from "../assets/image02_01.jpg";
+import image03_02 from "../assets/image02_02.jpg";
 import HeartFull from "../assets/HeartFull.png";
 import HeartEmpty from "../assets/HeartEmpty.png";
 
@@ -26,22 +28,33 @@ const quizStages: Stage[] = [
         image1: image01_01,
         image2: image01_02,
         answerAreas: [
-            { x: 100, y: 80, radius: 40 },
-            { x: 150, y: 120, radius: 40 },
-            { x: 200, y: 150, radius: 40 },
-            { x: 300, y: 220, radius: 40 },
-            { x: 350, y: 260, radius: 40 },
+            { x: 75, y: 103, radius: 20 },
+            { x: 51, y: 213, radius: 20 },
+            { x: 210, y: 202, radius: 20 },
+            { x: 308, y: 76, radius: 20 },
+            { x: 407, y: 311, radius: 20 },
         ],
     },
     {
         image1: image02_01,
         image2: image02_02,
         answerAreas: [
-            { x: 80, y: 100, radius: 40 },
-            { x: 130, y: 140, radius: 40 },
-            { x: 180, y: 180, radius: 40 },
-            { x: 250, y: 200, radius: 40 },
-            { x: 300, y: 240, radius: 40 },
+            { x: 206, y: 168, radius: 20 },
+            { x: 361, y: 286, radius: 20 },
+            { x: 454, y: 266, radius: 20 },
+            { x: 367, y: 110, radius: 20 },
+            { x: 425, y: 126, radius: 20 },
+        ],
+    },
+    {
+        image1: image03_01,
+        image2: image03_02,
+        answerAreas: [
+            { x: 120, y: 321, radius: 20 },
+            { x: 117, y: 175, radius: 20 },
+            { x: 213, y: 201, radius: 20 },
+            { x: 244, y: 62, radius: 20 },
+            { x: 404, y: 229, radius: 20 },
         ],
     },
 ];
@@ -57,6 +70,13 @@ const SpotTheDifferenceGame: React.FC = () => {
     const answerAreas = currentStage.answerAreas;
 
     const [life, setLife] = useState(MAX_LIFE);
+    const lifeRef = useRef(MAX_LIFE);
+
+    const updateLife = (next: number) => {
+        lifeRef.current = next;
+        setLife(next);
+    };
+
     const [hintCount, setHintCount] = useState(0);
     const [usedHintIndexes, setUsedHintIndexes] = useState<number[]>([]);
     const [temporaryHintIndex, setTemporaryHintIndex] = useState<number | null>(null);
@@ -88,42 +108,32 @@ const SpotTheDifferenceGame: React.FC = () => {
         };
     }, [isStarted, isGameOver]);
 
-    // 게임 시작 전 오버레이
-    const renderStartOverlay = () =>
-        !isStarted && (
-            <div className="game-over-overlay">
-                <div className="game-over-popup">
-                    <h2>틀린 그림 찾기</h2>
-                    <p>두 개의 사진을 비교하여 다른 곳 5군데를 찾아보세요.</p>
-                    <button className="start-button" onClick={() => setIsStarted(true)}>
-                        게임 시작하기
-                    </button>
-                </div>
-            </div>
-        );
-
-    const handleWrongClick = () => {
-        setLife((prev) => {
-            const next = prev - 1;
-            if (next <= 0) {
-                setIsGameOver(true);
-                setGameOverReason("life");
-                return 0;
-            }
-            return next;
-        });
-    };
-
+    // 클릭 시 정답 영역 판별 (좌표 보정 포함)
     const handleImageClick = (e: React.MouseEvent<HTMLImageElement>) => {
+        if (!isStarted || isGameOver) return;
+
         const rect = e.currentTarget.getBoundingClientRect();
-        const clickX = e.clientX - rect.left;
-        const clickY = e.clientY - rect.top;
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const naturalWidth = e.currentTarget.naturalWidth;
+        const naturalHeight = e.currentTarget.naturalHeight;
+        const renderedWidth = e.currentTarget.width;
+        const renderedHeight = e.currentTarget.height;
+
+        const scaleX = naturalWidth / renderedWidth;
+        const scaleY = naturalHeight / renderedHeight;
+
+        const adjustedX = x * scaleX;
+        const adjustedY = y * scaleY;
 
         const foundIndex = answerAreas.findIndex((area, idx) => {
-            const dx = clickX - area.x;
-            const dy = clickY - area.y;
+            if (foundAreas.includes(idx)) return false;
+
+            const dx = adjustedX - area.x;
+            const dy = adjustedY - area.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
-            return distance <= area.radius && !foundAreas.includes(idx);
+            return distance <= area.radius;
         });
 
         if (foundIndex !== -1) {
@@ -133,6 +143,17 @@ const SpotTheDifferenceGame: React.FC = () => {
         }
     };
 
+    const handleWrongClick = () => {
+        if (lifeRef.current <= 1) {
+            updateLife(0);
+            setIsGameOver(true);
+            setGameOverReason("life");
+        } else {
+            updateLife(lifeRef.current - 1);
+        }
+    };
+
+    // 힌트 토글 (힌트 위치 표시, 3초 후 사라짐)
     const toggleHint = () => {
         if (hintCount >= MAX_HINTS || isGameOver) return;
 
@@ -151,27 +172,55 @@ const SpotTheDifferenceGame: React.FC = () => {
         hintTimeoutRef.current = setTimeout(() => setTemporaryHintIndex(null), 3000);
     };
 
-    const renderOverlay = () => (
-        <div className="overlay">
-            {answerAreas.map((area, index) => {
-                const show = foundAreas.includes(index) || index === temporaryHintIndex;
-                if (!show || isGameOver) return null;
+    // 힌트 및 발견된 정답 영역 표시 (좌표 렌더 크기로 보정)
+    const renderOverlay = () => {
+        // 첫 번째 이미지 엘리먼트 선택 (렌더된 크기 얻기 위해)
+        const imageElement = document.querySelector(".image-box .game-image") as HTMLImageElement | null;
+        if (!imageElement) return null;
 
-                return (
-                    <div
-                        key={index}
-                        className={`hint-circle ${index === temporaryHintIndex ? "fade-hint" : ""}`}
-                        style={{
-                            left: `${area.x - area.radius}px`,
-                            top: `${area.y - area.radius}px`,
-                            width: `${area.radius * 2}px`,
-                            height: `${area.radius * 2}px`,
-                        }}
-                    />
-                );
-            })}
-        </div>
-    );
+        const renderedWidth = imageElement.clientWidth;
+        const renderedHeight = imageElement.clientHeight;
+        const naturalWidth = imageElement.naturalWidth;
+        const naturalHeight = imageElement.naturalHeight;
+
+        const scaleX = renderedWidth / naturalWidth;
+        const scaleY = renderedHeight / naturalHeight;
+
+        return (
+            <div className="overlay">
+                {answerAreas.map((area, index) => {
+                    const show = foundAreas.includes(index) || index === temporaryHintIndex;
+                    if (!show || isGameOver) return null;
+
+                    return (
+                        <div
+                            key={index}
+                            className={`hint-circle ${index === temporaryHintIndex ? "fade-hint" : ""}`}
+                            style={{
+                                left: `${area.x * scaleX - area.radius * scaleX}px`,
+                                top: `${area.y * scaleY - area.radius * scaleY}px`,
+                                width: `${area.radius * 2 * scaleX}px`,
+                                height: `${area.radius * 2 * scaleY}px`,
+                            }}
+                        />
+                    );
+                })}
+            </div>
+        );
+    };
+
+    const renderStartOverlay = () =>
+        !isStarted && !isGameOver && (
+            <div className="game-over-overlay">
+                <div className="game-over-popup">
+                    <h2>틀린 그림 찾기</h2>
+                    <p>두 개의 사진을 비교하여 다른 곳 5군데를 찾아보세요.</p>
+                    <button className="start-button" onClick={() => setIsStarted(true)}>
+                        게임 시작하기
+                    </button>
+                </div>
+            </div>
+        );
 
     const renderGameOverOverlay = () =>
         isGameOver && (
@@ -211,25 +260,30 @@ const SpotTheDifferenceGame: React.FC = () => {
     const resetGame = (isExit: boolean = false) => {
         if (isExit) {
             setIsStarted(false);
+            setIsGameOver(false);
             return;
         }
 
+        if (timerRef.current) clearInterval(timerRef.current);
+        if (hintTimeoutRef.current) clearTimeout(hintTimeoutRef.current);
+
+        setIsGameOver(false);
+        setGameOverReason("");
         setCurrentStageIndex(0);
-        setLife(MAX_LIFE);
+
+        updateLife(MAX_LIFE);
         setHintCount(0);
         setTemporaryHintIndex(null);
         setUsedHintIndexes([]);
         setFoundAreas([]);
         setMilliseconds(MAX_TIME);
-        setIsGameOver(false);
-        setGameOverReason("");
         setIsStarted(true);
     };
 
     const handleNextStage = () => {
         if (currentStageIndex < quizStages.length - 1) {
             setCurrentStageIndex((prev) => prev + 1);
-            setLife(MAX_LIFE);
+            updateLife(MAX_LIFE);
             setHintCount(0);
             setTemporaryHintIndex(null);
             setUsedHintIndexes([]);
@@ -243,12 +297,13 @@ const SpotTheDifferenceGame: React.FC = () => {
         }
     };
 
+    // 모든 정답 찾았을 때 클리어 처리
     useEffect(() => {
-        if (foundAreas.length === answerAreas.length && !isGameOver) {
+        if (foundAreas.length === answerAreas.length && !isGameOver && isStarted) {
             setIsGameOver(true);
             setGameOverReason("clear");
         }
-    }, [foundAreas, answerAreas.length, isGameOver]);
+    }, [foundAreas, answerAreas.length, isGameOver, isStarted]);
 
     const formatTime = (ms: number): string => {
         const sec = String(Math.floor(ms / 1000)).padStart(2, "0");
@@ -279,7 +334,7 @@ const SpotTheDifferenceGame: React.FC = () => {
                             src={currentStage.image1}
                             alt="원본"
                             className="game-image"
-                            onClick={handleImageClick}
+                            onClick={isStarted && !isGameOver ? handleImageClick : undefined}
                         />
                     </div>
                     <div className="image-box">
@@ -287,7 +342,7 @@ const SpotTheDifferenceGame: React.FC = () => {
                             src={currentStage.image2}
                             alt="다른 그림"
                             className="game-image"
-                            onClick={handleImageClick}
+                            onClick={isStarted && !isGameOver ? handleImageClick : undefined}
                         />
                     </div>
                     {renderOverlay()}

@@ -36,16 +36,16 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
       icon: "",
       color: "from-pink-400 to-rose-500",
       imageUrl: "http://localhost:3004/slic.jpeg",
-      participantCount: 8,
+      participantCount: 16,
       difficulty: "popular",
       status: "Yes",
       categoryName: "가장 최악인 상황은 ?"
     },
     {
       id: 2,
-      title: "스포츠 대결",
-      description: "어떤 스포츠가 가장 재미있을까요?",
-      icon: "⚽",
+      title: "남사친 여사친",
+      description: `너는 남녀사이에 친구가 있다고 생각해? / 어디까지가 친구일까?`,
+      icon: "",
       color: "from-purple-400 to-indigo-500",
       imageUrl: "/api/placeholder/300/200",
       participantCount: 8,
@@ -55,9 +55,9 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
     },
     {
       id: 3,
-      title: "동물 대결",
-      description: "가장 귀여운 동물은?",
-      icon: "🐕",
+      title: "최악의 소개팅 상대",
+      description: "",
+      icon: "",
       color: "from-orange-400 to-red-500",
       imageUrl: "/api/placeholder/300/200",
       participantCount: 8,
@@ -67,9 +67,9 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
     },
     {
       id: 4,
-      title: "취미 대결",
+      title: "가장 키우고 싶은 동물?",
       description: "가장 재미있는 취미 활동은?",
-      icon: "🎮",
+      icon: "",
       color: "from-green-400 to-emerald-500",
       imageUrl: "/api/placeholder/300/200",
       participantCount: 8,
@@ -79,9 +79,9 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
     },
     {
       id: 5,
-      title: "전체 대결",
-      description: "모든 카테고리를 섞어서 대결해보세요",
-      icon: "🌟",
+      title: "준비중",
+      description: "준     비     중 ",
+      icon: "",
       color: "from-blue-400 to-cyan-500",
       imageUrl: "/api/placeholder/300/200",
       participantCount: 32,
@@ -103,7 +103,8 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
 
   const roundOptions = [
     { value: 4, label: '4강' },
-    { value: 8, label: '8강' }
+    { value: 8, label: '8강' },
+    { value: 16, label: '16강' }
   ];
 
   const handleCategorySelect = (categoryId: number) => {
