@@ -8,6 +8,92 @@
     background: linear-gradient(to bottom right, #EDFBFB, #E8F8FD);
 }
 
+
+.start-screen {
+    position: fixed; /* 화면 전체 덮기 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7); /* 살짝 투명하게 */
+    z-index: 1000;
+}
+
+.start-card {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    text-align: center;
+    width: 300px;
+}
+
+.magnifier-icon {
+    width: 100px;
+    height: 100px;
+    background-image: url('../assets/start-icon.png'); /* 돋보기 이미지 */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto 20px;
+    animation: float-spin 3s ease-in-out infinite;
+}
+
+.game-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.game-description {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.start-button,
+.exit-button {
+    background-color: #11a398;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin: 10px 5px 0;
+}
+
+.start-button {
+    background-color: #1dbaa8;
+    color: white;
+}
+
+.start-button:hover {
+    background-color: #0e8c83;
+}
+
+.exit-button {
+    background-color: #eeeeee;
+    color: #333;
+}
+
+.start-subtitle {
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    text-align: center;
+}
+
 .title {
     text-align: center;
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; /* Pretendard 폰트 적용 */
@@ -62,7 +148,7 @@
 .game-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
 }
 
@@ -170,18 +256,131 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* 검은 투명 오버레이 */
+    background-color: rgba(0, 0, 0, 0.7); /* 반투명 배경 */
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 3000;
 }
 
 .gameover-container {
     background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
     padding: 40px;
-    border-radius: 10px;
     text-align: center;
+    width: 400px;
+}
+
+.gameover-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.gameover-container button {
+    background-color: #11a398;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin: 10px 5px 0;
+}
+
+.gameover-container button:hover {
+    background-color: #0e8c83;
+}
+
+.sparkle-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 3000;
+}
+
+.sparkle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #ffe066 0%, #ff8c00 60%, transparent 100%);
+    border-radius: 50%;
+    animation: sparkleFall 2.5s linear forwards;
+    opacity: 0.8;
+}
+
+@keyframes sparkleFall {
+    0% {
+        transform: translateY(-10px) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+    }
+}
+
+.flower {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle, #ffe066 0%, #ff8c00 60%, transparent 100%);
+    border-radius: 50%;
+    animation: fall 2.5s linear forwards;
+    opacity: 0.8;
+}
+
+.flower-burst {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #ffbb00 0%, #ff69b4 70%, transparent 100%);
+    border-radius: 50%;
+    animation: burst 0.8s ease-out forwards;
+    pointer-events: none;
+    opacity: 0.9;
+    z-index: 5000;
+}
+
+@keyframes burst {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--dx), var(--dy)) scale(0.7);
+        opacity: 0;
+    }
+}
+
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10px) rotate(0deg);
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes float-spin {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(10deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
 }
 
 @keyframes fadeOut {
