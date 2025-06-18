@@ -89,10 +89,10 @@ body {
   overflow: hidden;
 }
 
-.logo-icon:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 20px rgba(20, 184, 166, 0.3);
-}
+/*.logo-icon:hover {*/
+/*  transform: scale(1.05);*/
+/*  box-shadow: 0 4px 20px rgba(20, 184, 166, 0.3);*/
+/*}*/
 
 .logo-icon::before {
   content: '';
@@ -107,6 +107,12 @@ body {
 
 .logo-icon:hover::before {
   left: 100%;
+}
+
+.nav-link.active {
+  color: #1bb100;
+  font-weight: bold;
+  border-bottom: 2px solid #6bf850;
 }
 
 .nav {
