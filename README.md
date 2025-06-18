@@ -6,10 +6,10 @@ It's for PlayPick
 
 <table class="tg"><thead>
   <tr>
-    <th class="tg-9353"><span style="font-weight:bold">**최현수**</span></th>
-    <th class="tg-9353"><span style="font-weight:bold">**김정민**</span></th>
-    <th class="tg-9353"><span style="font-weight:bold">**이신원**</span></th>
-    <th class="tg-9353"><span style="font-weight:bold">**전지연**</span></th>
+    <th class="tg-9353"><span style="font-weight:bold">최현수</span></th>
+    <th class="tg-9353"><span style="font-weight:bold">김정민</span></th>
+    <th class="tg-9353"><span style="font-weight:bold">이신원</span></th>
+    <th class="tg-9353"><span style="font-weight:bold">전지연</span></th>
   </tr></thead>
 <tbody>
   <tr>
