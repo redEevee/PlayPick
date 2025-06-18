@@ -21,7 +21,7 @@ export const gameDatasets: GameItem[][] = [
       image: "http://localhost:3004/haw.jpg", description: "심지어 캐릭터 잠옷 입고 있음", category: "가장 최악인 상황은 ?" },
     { id: 6, name: "중요한 프레젠테이션 중에 PPT에 직장 상사 험담 적어놓은게 나옴",
       image: "http://localhost:3004/ppt.jpg", description: "심지어 회의실 모든 상사분들 험담이 있음", category: "가장 최악인 상황은 ?" },
-    { id: 7, name: "내가 싫어하던 사람이 회식 자리에서 \n 모두 다 보는 앞에서 진지하게 공개 고백 받음",
+    { id: 7, name: "내가 싫어하던 사람한테 회식 자리에서 \n 모두 다 보는 앞에서 진지하게 공개 고백 받음",
       image: "http://localhost:3004/public2.jpg", description: "심지어 자동차 이벤트를 곁들인", category: "가장 최악인 상황은 ?" },
     { id: 8, name: "소개팅이 완전 성공적이었지만, \n 집에 와서 보니 이에 고추가루가 끼어 있었던 나,",
       image: "http://localhost:3004/go.jpg", description: "심지어 반대쪽엔 야채가,,,", category: "가장 최악인 상황은 ?" },

@@ -1,4 +1,5 @@
 import React from 'react';
+import 'aos/dist/aos.css';
 interface LandingPageProps {
     onStartGame: () => void;
 }
