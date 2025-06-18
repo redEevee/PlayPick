@@ -1,40 +1,47 @@
 # PlayPick
 It's for PlayPick
-
-## 📁 프로젝트 폴더 구조
-PlayPick/
-├── .idea/                           # IDE 설정 (JetBrains 등)
-├── node_modules/                   # 의존성 모듈
-├── choices-of-a-spring-day/        # 미니게임 1: 봄날의 선택
-│   ├── public/                     # 게임 이미지
-│   └── src/                        # 게임 로직 (React + TypeScript)
-│       ├── App.tsx
-│       ├── SimulationGame.tsx
-│       └── ...
-│
-├── Landing-Page/                   # 랜딩 페이지 프론트엔드
-│   ├── public/                     # 이미지 및 정적 파일
-│   │   └── LandingImage/          # 배경 이미지 모음
-│   └── src/                        # React UI 구성
-│       ├── LandingPage.tsx
-│       └── ...
-│
-├── main-container/                 # 메인 앱 컨테이너 (모든 앱 통합)
-│   ├── @mf-types/                 # 모듈 간 타입 공유
-│   └── src/
-│       ├── App.tsx                # 진입점
-│       └── ...
-│
-├── navigation-bar-app/            # 네비게이션 바 앱 (Micro Frontend)
-│   └── src/
-│       ├── App.tsx
-│       └── navbar.css
-│
-├── .gitignore
-├── README.md
-├── lerna.json                      # 모노레포 설정
-├── package.json                   # 루트 패키지 정보
-└── folder_structure.txt           # 이 구조 파일
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>PlayPick 프로젝트 구조</title>
+  <style>
+    body {
+      font-family: monospace, monospace;
+      white-space: pre;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+    .folder {
+      color: #1a73e8;
+    }
+    .file {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p><span class="folder">PlayPick/</span></p>
+    <p>├── <span class="folder">choices-of-a-spring-day/</span> # 게임 페이지 (예: 봄날의 선택)</p>
+    <p>│   ├── <span class="folder">public/</span> # 이미지 리소스</p>
+    <p>│   └── <span class="folder">src/</span> # React 기반 게임 로직</p>
+    <p>├── <span class="folder">Landing-Page/</span> # 랜딩 페이지 프론트엔드</p>
+    <p>│   ├── <span class="folder">public/</span> # 이미지 및 LandingImage 하위 폴더</p>
+    <p>│   └── <span class="folder">src/</span> # React 기반 UI 구성</p>
+    <p>├── <span class="folder">main-container/</span> # 메인 컨테이너 (모듈 연동 및 통합 관리)</p>
+    <p>│   ├── <span class="folder">@mf-types/</span> # 모듈 간 타입 정의</p>
+    <p>│   └── <span class="folder">src/</span> # 메인 앱 진입점</p>
+    <p>├── <span class="folder">navigation-bar-app/</span> # 네비게이션 바 모듈 앱</p>
+    <p>│   └── <span class="folder">src/</span> # 컴포넌트 및 스타일</p>
+    <p>├── <span class="folder">node_modules/</span> # 의존성 모듈 (자동 생성)</p>
+    <p>├── <span class="folder">.idea/</span> # JetBrains IDE 설정</p>
+    <p>├── <span class="file">package.json</span> # 루트 패키지 의존성</p>
+    <p>├── <span class="file">lerna.json</span> # Lerna 설정 (모노레포 관리)</p>
+    <p>└── <span class="file">README.md</span> # 프로젝트 소개 파일</p>
+  </div>
+</body>
+</html>
 
 
 ---
