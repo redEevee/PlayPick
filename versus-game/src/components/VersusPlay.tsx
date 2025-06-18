@@ -144,17 +144,28 @@ const VersusPlay: React.FC<VersusPlayProps> = ({ gameIds, categoryId, selectedRo
 
   if (isGameComplete && champion) {
     return (
-      <div className="versus-play">
-        <div className="game-complete">
-          <h2>🏆 게임 완료!</h2>
-          <div className="champion-container">
-            <img src={champion.image} alt={champion.name} className="champion-image" />
-            <h3 className="champion-name">{champion.name}</h3>
-            <p className="champion-description">{champion.description}</p>
+      // <div className="versus-play">
+      //
+      //       <h3 className="champion-name">{champion.name}</h3>
+      //       <p className="champion-description">{champion.description}</p>
+      //     <button onClick={resetGame}>Home</button>
+      // </div>
+        <div className="winner-card-box">
+          <div className="winner-card">
+            <div className="card-content">
+              <div className="item-image-container">
+                <img src={champion.image} className="winner-image"/>
+              </div>
+              <div className="item-info">
+                <h3 className="item-name">{champion.name}</h3>
+                <p className="item-description">{champion.description}</p>
+              </div>
+              <div className="home-button-box">
+                <div className="home-button" onClick={()=> window.location.href = "/versus-game"}>Home</div>
+              </div>
+            </div>
           </div>
-          <button onClick={resetGame}>게임종료</button>
         </div>
-      </div>
     );
   }
 
@@ -165,7 +176,7 @@ const VersusPlay: React.FC<VersusPlayProps> = ({ gameIds, categoryId, selectedRo
   const [leftItem, rightItem] = currentPair;
 
   return (
-    <div className="versus-play">
+      <div className="versus-play">
       <header className="game-header">
         <h1> 가장 최악은 ? </h1>
         <div className="game-info">
