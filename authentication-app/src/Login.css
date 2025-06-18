@@ -4,7 +4,29 @@
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    /*padding: 2rem;*/
+    animation: floatAndTilt 5s ease-in-out infinite;
+
+}
+
+@keyframes floatAndTilt {
+    0% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+    20% {
+        transform: translate(5px, -5px) rotate(1deg);
+    }
+    40% {
+        transform: translate(0px, -10px) rotate(-1.5deg);
+    }
+    60% {
+        transform: translate(-5px, -5px) rotate(1deg);
+    }
+    80% {
+        transform: translate(0px, 5px) rotate(-1deg);
+    }
+    100% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
 }
 
 .login-card {
@@ -180,7 +202,6 @@
     }
 }
 
-/* 반응형 디자인 */
 @media (max-width: 480px) {
     .login-container {
         padding: 1rem;
