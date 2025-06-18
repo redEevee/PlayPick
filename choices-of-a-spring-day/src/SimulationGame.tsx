@@ -76,7 +76,7 @@ const SimulationGame: React.FC = () => {
         clearInterval(typingInterval);
         setIsTyping(false);
       }
-    }, 30); 
+    }, 50);
     
     return () => {
       console.log('Cleaning up typing interval');

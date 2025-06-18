@@ -10,7 +10,7 @@ function App() {
           <div className="header-content">
             <div className="logo-section">
               <div className="logo">
-                <div className="logo-icon" onClick={() => navigate("/")}>
+                <div className="logo-icon" onClick={() => window.location.href = "/"}>
                   <img src={"http://localhost:3002/Logo.png"} className="logo-img"/>
                 </div>
               </div>
@@ -25,7 +25,7 @@ function App() {
               <select className="language-select">
                 <option>한국어(KR)</option>
               </select>
-              <button className="btn btn-secondary">로그인</button>
+              <button className="btn btn-secondary" onClick={() => navigate("/login")}>로그인</button>
               <button className="btn btn-primary">
                 가입
               </button>
