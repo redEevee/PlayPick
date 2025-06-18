@@ -19,10 +19,19 @@ It's for PlayPick
     <td class="tg-9353"><img src="https://cdn.discordapp.com/attachments/1383999022238273586/1384715530136715366/1750066148038.jpg?ex=68537055&is=68521ed5&hm=74fb22315aca7246b65fbf04678837fb854606ec610d37f84029ecbba24a583b&" alt="Image" width="109" height="100"></td>
   </tr>
   <tr>
-    <td class="tg-7btt"><a href="https://github.com/IMCODER0000" target="_blank" rel="noopener noreferrer">GitHub</a></td>
-    <td class="tg-7btt"><a href="https://github.com/Mur-pixel" target="_blank" rel="noopener noreferrer">GitHub</a></td>
-    <td class="tg-9353"><a href="https://github.com/redEevee" target="_blank" rel="noopener noreferrer">GitHub</a></td>
-    <td class="tg-7btt"><a href="https://github.com/dia0723" target="_blank" rel="noopener noreferrer">GitHub</a></td>
+<td class="tg-7btt" style="text-align: center;">
+  <a href="https://github.com/IMCODER0000" target="_blank" rel="noopener noreferrer" >GitHub</a>
+</td>
+<td class="tg-7btt" style="text-align: center;">
+  <a href="https://github.com/Mur-pixel" target="_blank" rel="noopener noreferrer">GitHub</a>
+</td>
+<td class="tg-9353" style="text-align: center;">
+  <a href="https://github.com/redEevee" target="_blank" rel="noopener noreferrer">GitHub</a>
+</td>
+<td class="tg-7btt" style="text-align: center;">
+  <a href="https://github.com/dia0723" target="_blank" rel="noopener noreferrer">GitHub</a>
+</td>
+
   </tr>
 </tbody></table>
   
