@@ -37,7 +37,6 @@ export const gameDatasets: GameItem[][] = [
     { id: 16, name: "스키", image: "🎿", description: "겨울 스포츠", category: "스포츠" },
   ],
   [
-    // 동물 카테고리
     { id: 17, name: "강아지", image: "🐕", description: "인간의 가장 친한 친구", category: "동물" },
     { id: 18, name: "고양이", image: "🐱", description: "독립적인 애완동물", category: "동물" },
     { id: 19, name: "사자", image: "🦁", description: "백수의 왕", category: "동물" },
@@ -48,7 +47,6 @@ export const gameDatasets: GameItem[][] = [
     { id: 24, name: "토끼", image: "🐰", description: "빠르게 뛰는 귀여운 동물", category: "동물" },
   ],
   [
-    // 취미 카테고리
     { id: 25, name: "독서", image: "📚", description: "지식을 쌓는 활동", category: "취미" },
     { id: 26, name: "영화감상", image: "🎬", description: "스크린을 통한 즐거움", category: "취미" },
     { id: 27, name: "게임", image: "🎮", description: "디지털 엔터테인먼트", category: "취미" },
