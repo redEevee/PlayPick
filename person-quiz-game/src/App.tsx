@@ -7,7 +7,7 @@ import "./index.css";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App landing-container ">
       <header style={{
         textAlign: 'center',
         padding: '20px',
