@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import SocialLoginButton from "../ui/components/SocialLoginButton.tsx";
 
 import {useNavigate} from "react-router-dom";
-import env from '/Users/choehyeonsu/Desktop/playdata/FrontPr/PlayPick/authentication-app/src/env.ts';
+import env from '../env.ts';
 
 const KakaoAuthenticationPage: React.FC = () => {
     const navigate = useNavigate();
