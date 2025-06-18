@@ -36,14 +36,15 @@
 
 .image-box-container {
     display: flex;
-    flex-direction: row;     /* 이미지 박스 두 개를 가로로 나란히 */
-    gap: 20px;               /* 이미지 박스 간격 */
+    flex-direction: row;
+    gap: 20px;
     width: 1220px;
 }
 
 .image-box {
     position: relative;
-    width: 600px;
+    width: 1000px;
+    height: 500px;
     aspect-ratio: 16 / 9;
     border: 4px solid #1dbaa8;
     border-radius: 1rem;
@@ -107,7 +108,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* 클릭 방지 */
+    pointer-events: none;
 }
 
 .hint-circle {
@@ -205,4 +206,82 @@
         opacity: 0;
         transform: scale(0.8);
     }
+}
+
+.click-marker {
+    position: absolute;
+    border: 2px solid #ff4d4f;
+    border-radius: 50%;
+    background-color: rgba(255, 77, 79, 0.2);
+    animation: click-ping 0.6s ease-out;
+    pointer-events: none;
+    z-index: 20;
+}
+
+@keyframes click-ping {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* 클릭 마커 스타일 */
+.image-container {
+    position: relative;
+    display: inline-block;
+    width: 1000px;
+    height: 500px;
+}
+
+.click-marker {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: fadeOut 1s forwards;
+    z-index: 10;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+}
+
+.click-marker.correct {
+    background-color: rgba(46, 213, 115, 0.7);
+    box-shadow: 0 0 0 4px rgba(46, 213, 115, 0.4);
+}
+
+.click-marker.incorrect {
+    background-color: rgba(255, 71, 87, 0.7);
+    box-shadow: 0 0 0 4px rgba(255, 71, 87, 0.4);
+}
+
+/* 게임 이미지 스타일 */
+.game-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    cursor: pointer;
+}
+
+.coordinate-label {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ffffffcc;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 30;
 }
