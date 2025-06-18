@@ -6,11 +6,11 @@ import HeartFull from "../assets/HeartFull.png";
 import HeartEmpty from "../assets/HeartEmpty.png";
 
 const answerAreas = [
-    { x: 100, y: 80, radius: 40 },
-    { x: 200, y: 150, radius: 40 },
-    { x: 300, y: 220, radius: 40 },
-    { x: 400, y: 100, radius: 40 },
-    { x: 500, y: 300, radius: 40 }
+    { x: 789.2, y: 158.0, radius: 60 },
+    { x: 196.8, y: 226.1, radius: 60 },
+    { x: 134.1, y: 468.1, radius: 60 },
+    { x: 540.5, y: 441.6, radius: 60 },
+    { x: 1046.5, y: 689.3, radius: 60 }
 ];
 
 const SpotTheDifferenceGame = () => {
@@ -33,7 +33,15 @@ const SpotTheDifferenceGame = () => {
         }, 100); // 100ms 간격
 
         return () => clearInterval(timer);
-    }, [milliseconds]);
+    }, [isStarted]);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setMilliseconds(prev => prev); // 강제 렌더링
+        };
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     const handleWrongClick = () => {
         setLife((prev) => (prev > 0 ? prev - 1 : 0));
@@ -42,22 +50,38 @@ const SpotTheDifferenceGame = () => {
     const handleImageClick = (e) => {
         e.stopPropagation();
         const rect = e.target.getBoundingClientRect();
-        const clickX = e.clientX - rect.left;
-        const clickY = e.clientY - rect.top;
+
+        const scaleX = 1280 / rect.width;
+        const scaleY = 720 / rect.height;
+
+        const clickX = (e.clientX - rect.left) * scaleX;
+        const clickY = (e.clientY - rect.top) * scaleY;
+
+        // 어떤 이미지 박스를 클릭했는지 확인
+        const isRightImage = e.target.alt?.includes("틀린그림2"); // 오른쪽 이미지는 alt="틀린그림2"로 구분
+
+        const adjustedX = clickX;
+        const adjustedY = clickY;
+
+        console.log(
+            `New point → { x: ${adjustedX.toFixed(1)}, y: ${adjustedY.toFixed(1)}, radius: 40 },`
+        );
 
         const foundIndex = answerAreas.findIndex((area, index) => {
-            const dx = clickX - area.x;
-            const dy = clickY - area.y;
+            const dx = adjustedX - area.x;
+            const dy = adjustedY - area.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
             return distance <= area.radius && !foundAreas.includes(index);
         });
 
         if (foundIndex !== -1) {
+            // console.log("정답 인식됨! foundIndex:", foundIndex); // 개발자 도구 콘솔창에서 제대로 인식되고 있는지 확인하는 용도
             setFoundAreas([...foundAreas, foundIndex]);
         } else {
             handleWrongClick();
         }
     };
+
 
     const toggleHint = () => {
         if (hintCount >= MAX_HINTS) return;
@@ -85,43 +109,45 @@ const SpotTheDifferenceGame = () => {
         }, 3000);
     };
 
-    const renderOverlay = () => (
-        <div className="overlay">
-            {answerAreas.map((area, index) => {
-                const show = foundAreas.includes(index) || index === temporaryHintIndex;
+    const renderOverlay = (imageRef) => {
+        if (!imageRef.current) return null;
 
-                if (!show) return null;
+        const rect = imageRef.current.getBoundingClientRect();
+        const scaleX = rect.width / 1280;
+        const scaleY = rect.height / 720;
 
-                return (
-                    <div
-                        key={index}
-                        className={`hint-circle ${index === temporaryHintIndex ? "fade-hint" : ""}`}
-                        style={{
-                            left: `${area.x - area.radius}px`,
-                            top: `${area.y - area.radius}px`,
-                            width: `${area.radius * 2}px`,
-                            height: `${area.radius * 2}px`,
-                            borderRadius: "50%"
-                        }}
-                    />
-                );
-            })}
-        </div>
-    );
+        return (
+            <div className="overlay">
+                {answerAreas.map((area, index) => {
+                    const show = foundAreas.includes(index) || index === temporaryHintIndex;
+                    if (!show) return null;
+
+                    return (
+                        <div
+                            key={index}
+                            className={`hint-circle ${index === temporaryHintIndex ? "fade-hint" : ""}`}
+                            style={{
+                                left: `${area.x * scaleX}px`,
+                                top: `${area.y * scaleY}px`,
+                                width: `${area.radius * 2 * scaleX}px`,
+                                height: `${area.radius * 2 * scaleY}px`,
+                                transform: "translate(-50%, -50%)"
+                            }}
+                        />
+                    );
+                })}
+            </div>
+        );
+    };
+
+    const leftImageRef = useRef(null);
+    const rightImageRef = useRef(null);
 
     const formatTime = (ms) => {
         const sec = String(Math.floor(ms / 1000)).padStart(2, "0");
         const msec = String(Math.floor((ms % 1000) / 10)).padStart(2, "0");
         return `${sec}:${msec}`;
     };
-
-    if(!isStarted){
-        <div className="quiz-container">
-            <h2>틀린 그림 찾기</h2>
-            <p>그림에서 틀린 부분을 찾아보세요!</p>
-            <button className="start-button" onClick={() => setIsStarted(true)}>퀴즈 시작</button>
-        </div>
-    }
 
     return (
         <div>
@@ -142,12 +168,24 @@ const SpotTheDifferenceGame = () => {
 
                 <div className="image-box-container">
                     <div className="image-box">
-                        <img src={image01} alt="틀린그림1" className="game-image" onClick={handleImageClick} />
-                        {renderOverlay()}
+                        <img
+                            src={image01}
+                            alt="틀린그림1"
+                            className="game-image"
+                            onClick={handleImageClick}
+                            ref={leftImageRef}
+                        />
+                        {renderOverlay(leftImageRef)}
                     </div>
                     <div className="image-box">
-                        <img src={image02} alt="틀린그림2" className="game-image" onClick={handleImageClick} />
-                        {renderOverlay()}
+                        <img
+                            src={image02}
+                            alt="틀린그림2"
+                            className="game-image"
+                            onClick={handleImageClick}
+                            ref={rightImageRef}
+                        />
+                        {renderOverlay(rightImageRef)}
                     </div>
                 </div>
 
