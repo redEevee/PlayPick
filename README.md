@@ -34,7 +34,7 @@ It's for PlayPick
 ## 🧩 구조 설명
 
 - **모노레포 기반 구조**로 구성되어 있으며, `Lerna`를 통해 각 앱을 효율적으로 관리합니다.
-- `main-container`는 전체 앱의 진입점 역할을 하며, Micro Frontend 방식으로 각 앱(`Landing-Page`, `choices-of-a-spring-day`, `navigation-bar-app`)을 로드합니다.
+- `main-container`는 전체 앱의 진입점 역할을 하며, Micro Frontend 방식으로 각 앱(`Landing-Page`, `choices-of-a-spring-day`, `navigation-bar-app`,`person-quiz-game`,`spot-the-difference`,`versus-game`,`navigation-bar-app`)을 로드합니다.
 - 각 앱은 **독립적으로 개발 및 배포 가능**하도록 설계되어 있습니다.
 ---
 시작페이지 
