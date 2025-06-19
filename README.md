@@ -15,7 +15,7 @@ PlayPick은 다양한 게임 콘텐츠를 하나의 플랫폼에서 즐길 수 �
 ## 🧩 구조 설명
 
 - **모노레포 기반 구조**로 구성되어 있으며, `Lerna`를 통해 각 앱을 효율적으로 관리합니다.
-- `main-container`는 전체 앱의 진입점 역할을 하며, Micro Frontend 방식으로 각 앱(`Landing-Page`, `choices-of-a-spring-day`, `navigation-bar-app`, `person-quiz-game`, `spot-the-difference`, `versus-game`, `authentication-app`)을 로드합니다.
+- `main-container`는 전체 앱의 진입점 역할을 하며, Micro Frontend 방식으로 각 앱(`Landing-Page`, `choices-of-a-spring-day`, `navigation-bar-app`, `person-quiz-game`, `spot-the-difference`, `versus-game`, `navigation-bar-app`)을 로드합니다.
 - 각 앱은 **독립적으로 개발 및 배포 가능**하도록 설계되어 있습니다.
 
 ---
@@ -41,9 +41,9 @@ PlayPick은 다양한 게임 콘텐츠를 하나의 플랫폼에서 즐길 수 �
 ## 🖼 실행화면
 
 ## 시작 페이지
-
-## VS 게임
-
+![시작 화면](https://media.discordapp.net/attachments/1383999022238273586/1385097319237685378/image.png?ex=6854d3e6&is=68538266&hm=87c34751e0fad3acc807e17313415d1893bdc6bc8fae330f2564032dfd06fab8&=&format=webp&quality=lossless&width=1279&height=660)
+## 이상형 월드컵 게임
+![이상형 월드컵 화면]
 ## 틀린 그림 찾기
 ![틀린 그림 찾기](https://media.discordapp.net/attachments/1383999022238273586/1385085635504898069/651f2f96e72ea7f4.png?ex=6854c905&is=68537785&hm=1700f9728d7d40b5bae719cfadb3453c25bd7b7c8cd4ebd74b9b53d971daa29a&=&format=webp&quality=lossless&width=1010&height=568)
 
