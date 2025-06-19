@@ -211,7 +211,8 @@ const SpotTheDifferenceGame = () => {
     };
 
     const goToNextStage = () => {
-        setStageIndex((prev) => (prev + 1) % imageGroups.length);
+        if (stageIndex >= imageGroups.length - 1) return;
+        setStageIndex((prev) => prev + 1);
         setFoundAreas([]);
         setHintCount(0);
         setLife(5);
@@ -254,16 +255,34 @@ const SpotTheDifferenceGame = () => {
                 <div className="gameover-overlay">
                     <div className="sparkle-container" />
                     <div className="gameover-container">
-                        <h2>🎉 정답을 모두 맞췄어요!</h2>
-                        <button
-                            onClick={() => {
-                                goToNextStage();
-                                setIsStageCleared(false);
-                            }}
-                        >
-                            다음 문제 풀기
-                        </button>
-                        <button onClick={() => setIsStarted(false)}>종료하기</button>
+                        <h2>
+                            {stageIndex === imageGroups.length - 1 ? (
+                                <>
+                                    모든 스테이지를 통과하셨습니다!
+                                    <br />
+                                    🎉 축하합니다! 🎉
+                                </>
+                            ) : (
+                                "🎉 정답을 모두 맞췄어요!"
+                            )}
+                        </h2>
+
+                        {stageIndex === imageGroups.length - 1 ? (
+                            <button onClick={() => setIsStarted(false)}>종료하기</button>
+                        ) : (
+                            <button
+                                onClick={() => {
+                                    goToNextStage();
+                                }}
+                            >
+                                다음 문제 풀기
+                            </button>
+                        )}
+
+                        {/* 마지막 스테이지든 아니든 종료 버튼은 항상 제공 */}
+                        {stageIndex !== imageGroups.length - 1 && (
+                            <button onClick={() => setIsStarted(false)}>종료하기</button>
+                        )}
                     </div>
                 </div>
             )}
@@ -328,6 +347,8 @@ const SpotTheDifferenceGame = () => {
                         >
                             HINT ({MAX_HINTS - hintCount})
                         </div>
+
+                        {/* 테스트 수행 후 아래 버튼은 비활성화할 것*/}
                         {!isStageCleared && (
                             <button className="hint-box" onClick={goToNextStage}>다음 문제 →</button>
                         )}
