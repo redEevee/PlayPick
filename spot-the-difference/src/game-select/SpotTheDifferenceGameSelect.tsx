@@ -42,7 +42,7 @@ const SpotTheDifferenceGameSelect: React.FC<VersusGameProps> = ({ onBackToLandin
             icon: "",
             color: "from-purple-400 to-indigo-500",
             imageUrl: "http://localhost:3005/two.png",
-            status: "No",
+            status: "Yes",
             categoryName: "스포츠"
         },
         {
@@ -52,7 +52,7 @@ const SpotTheDifferenceGameSelect: React.FC<VersusGameProps> = ({ onBackToLandin
             icon: "",
             color: "from-orange-400 to-red-500",
             imageUrl: "http://localhost:3005/three.png",
-            status: "No",
+            status: "Yes",
             categoryName: "동물"
         },
         {

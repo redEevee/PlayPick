@@ -156,8 +156,9 @@ const VersusGame: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
             <main className="main-content">
               <div className="hero">
                 <h1 className="hero-title">
-                  어떤 <span className="hero-highlight">카테고리</span>에서<br />
-                  <span className="hero-highlight">승부</span>를 겨뤄볼까요?
+                  <span className="hero-highlight">Versus</span>game
+                  {/*<br />*/}
+                  {/*<span className="hero-highlight">승부</span>를 겨뤄볼까요?*/}
                 </h1>
                 <p className="versus-description">
                   원하는 카테고리를 선택하고 최고를 가려보세요!
