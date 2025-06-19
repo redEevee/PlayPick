@@ -1,4 +1,4 @@
-/* src/game/PersonQuizGame.css - App.css 스타일 통합 */
+/* src/game/PersonQuizGame.css - LandingPage.css 스타일 통합 */
 
 /* App.css의 Pretendard 폰트 사용 */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
@@ -141,7 +141,7 @@ h3 {
 .final-score-display {
   margin-top: 25px;
   font-size: 1.5em; /* 점수 크기 증가 */
-  color: #0056b3; /* 기존 파란색 유지 또는 App.css 스타일에 맞게 변경 가능 */
+  color: #0056b3; /* 기존 파란색 유지 또는 LandingPage.css 스타일에 맞게 변경 가능 */
   font-weight: bold;
 }
 
