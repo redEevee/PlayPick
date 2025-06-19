@@ -50,6 +50,7 @@ body {
   height: 90%;
   background-color: white;
   max-width: 1600px;
+  max-height: 105px;
   /*min-height: 80px;*/
   width: 80%;
   border: 2px solid #ededed;
