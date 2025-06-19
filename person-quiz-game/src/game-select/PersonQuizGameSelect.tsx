@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import "./SpotTheDifferenceGameSelect.css";
-import SpotTheDifferenceGame from '../game/SpotTheDifferenceGame';
+import "./PersonQuizGameSelect.css";
+import PersonQuizGame from '../game/PersonQuizGame';
+import AnimalQuizGame from '../game/AnimalQuizGame';
+import CountryQuizGame from '../game/CountryQuizGame';
 
 interface VersusGameProps {
     onBackToLanding: () => void;
@@ -17,7 +19,7 @@ interface VersusCategory {
     categoryName?: string;
 }
 
-const SpotTheDifferenceGameSelect: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
+const PersonQuizGameSelect: React.FC<VersusGameProps> = ({ onBackToLanding }) => {
     const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
     const [gameStatus, setGameStatus] = useState("Ready");
     
@@ -27,31 +29,31 @@ const SpotTheDifferenceGameSelect: React.FC<VersusGameProps> = ({ onBackToLandin
     const categories: VersusCategory[] = [
         {
             id: 1,
-            title: "",
+            title: "인물 퀴즈",
             description: "",
             icon: "",
             color: "from-pink-400 to-rose-500",
-            imageUrl: "http://localhost:3005/one.jpg",
+            imageUrl: "http://localhost:3003/person.jpeg",
             status: "Yes",
             categoryName: "가장 최악인 상황은 ?"
         },
         {
             id: 2,
-            title: "",
+            title: "동물 퀴즈!",
             description: ``,
             icon: "",
             color: "from-purple-400 to-indigo-500",
-            imageUrl: "http://localhost:3005/two.png",
+            imageUrl: "http://localhost:3003/chill.jpeg",
             status: "Yes",
             categoryName: "스포츠"
         },
         {
             id: 3,
-            title: "",
+            title: "나라 맞추기",
             description: "",
             icon: "",
             color: "from-orange-400 to-red-500",
-            imageUrl: "http://localhost:3005/three.png",
+            imageUrl: "http://localhost:3003/con.jpeg",
             status: "Yes",
             categoryName: "동물"
         },
@@ -77,15 +79,7 @@ const SpotTheDifferenceGameSelect: React.FC<VersusGameProps> = ({ onBackToLandin
         }
     ];
 
-    const getDifficultyColor = (difficulty: string) => {
-        switch (difficulty) {
-            case 'Easy': return 'bg-green-100 text-green-800';
-            case 'Normal': return 'bg-yellow-100 text-yellow-800';
-            case 'Hard': return 'bg-red-100 text-red-800';
-            case 'popular': return 'bg-purple-100 text-purple-800';
-            default: return 'bg-gray-100 text-gray-800';
-        }
-    };
+
 
     
 
@@ -116,7 +110,7 @@ const SpotTheDifferenceGameSelect: React.FC<VersusGameProps> = ({ onBackToLandin
                 <main className="main-content">
                     <div className="hero">
                         <h1 className="hero-title">
-                             <span className="hero-highlight">틀린 그림 찾기 </span>게임
+                             <span className="hero-highlight">Quiz </span>게임
                             {/*<br />*/}
                             {/*<span className="hero-highlight">승부</span>를 겨뤄볼까요?*/}
                         </h1>
@@ -134,13 +128,7 @@ const SpotTheDifferenceGameSelect: React.FC<VersusGameProps> = ({ onBackToLandin
                             >
                                 <div className="category-card-inner">
                                     <div className="category-header">
-                                        <div className="category-badges">
-                      <span className={`difficulty-badge ${getDifficultyColor(category.difficulty)}`}>
-                        {category.difficulty}
-                      </span>
-                                            <span className="participant-badge">
-                      </span>
-                                        </div>
+
                                         <div className="category-icon">
                                             {category.icon}
                                         </div>
@@ -166,8 +154,10 @@ const SpotTheDifferenceGameSelect: React.FC<VersusGameProps> = ({ onBackToLandin
                                     )}
 
                                     <div className="category-content">
-                                        <h3 className="category-title">{category.title}</h3>
-                                        <p className="category-description">{category.description}</p>
+
+                                        <div className="description-box">
+                                            <p className="category-description-person-quiz">{category.title}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -194,12 +184,10 @@ const SpotTheDifferenceGameSelect: React.FC<VersusGameProps> = ({ onBackToLandin
                 </main>
             ) : gameStatus === "start" ? (
                 <div className="game-screen">
-                    {selectedCategory !== null && (
-                        <SpotTheDifferenceGame
-                            gameId={selectedCategory}
-                            onBack={handleBackToCategories}
-                        />
-                    )}
+                    <button onClick={handleBackToCategories} className="back-button" style={{ position: 'absolute', top: '20px', left: '20px', background: '#fff', border: '1px solid #ccc', borderRadius: '5px', padding: '5px 10px', cursor: 'pointer' }}>← Back</button>
+                    {selectedCategory === 1 && <PersonQuizGame />}
+                    {selectedCategory === 2 && <AnimalQuizGame />}
+                    {selectedCategory === 3 && <CountryQuizGame />}
                 </div>
             ) : (
                 <div className="game-end-screen">
@@ -213,4 +201,4 @@ const SpotTheDifferenceGameSelect: React.FC<VersusGameProps> = ({ onBackToLandin
     );
 };
 
-export default SpotTheDifferenceGameSelect;
+export default PersonQuizGameSelect;
