@@ -92,7 +92,7 @@ const Login = () => {
                     </div>
                 </div>
 
-                <div className="footer">
+                <div className="footer-login">
                     <p>© 2025 PlayPick. All rights reserved.</p>
                     <div className="links">
                         <a href="#">이용약관</a>
