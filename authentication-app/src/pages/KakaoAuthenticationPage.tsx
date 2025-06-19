@@ -33,6 +33,7 @@ const KakaoAuthenticationPage: React.FC = () => {
             }
 
             localStorage.setItem('userToken', accessToken);
+            localStorage.setItem('user', user);
             window.dispatchEvent(new Event("user-token-changed"));
 
             window.removeEventListener('message', receiveMessage);

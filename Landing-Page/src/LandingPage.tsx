@@ -12,6 +12,31 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const navigate = useNavigate();
 
+  const [showTopBtn, setShowTopBtn] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setShowTopBtn(true);
+      } else {
+        setShowTopBtn(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   const serviceCards = [
     {
       id: 1,
@@ -284,12 +309,39 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
               <a href="/terms">이용약관</a>
               <a href="/contact">문의하기</a>
             </div>
-            <div className="social-links">
-              <a href="#" aria-label="Facebook" className="social-icon">F</a>
-            </div>
+
             <p className="copyright">© 2025 PlayPick. All rights reserved.</p>
           </div>
         </footer>
+
+        {showTopBtn && (
+          <button
+            onClick={scrollToTop}
+            style={{
+              position: 'fixed',
+              bottom: '30px',
+              right: '30px',
+              backgroundColor: '#38b2ac',
+              color: 'white',
+              border: 'none',
+              borderRadius: '50%',
+              width: '50px',
+              height: '50px',
+              fontSize: '15px',
+              fontWeight:"bold",
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+              zIndex: 1000,
+              transition: 'opacity 0.3s, transform 0.3s',
+            }}
+            aria-label="Go to top"
+          >
+            TOP
+          </button>
+        )}
       </div>
   );
 };
