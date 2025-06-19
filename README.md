@@ -42,14 +42,23 @@ PlayPick은 다양한 게임 콘텐츠를 하나의 플랫폼에서 즐길 수 �
 
 ## 시작 페이지
 ![시작 화면](https://media.discordapp.net/attachments/1383999022238273586/1385097319237685378/image.png?ex=6854d3e6&is=68538266&hm=87c34751e0fad3acc807e17313415d1893bdc6bc8fae330f2564032dfd06fab8&=&format=webp&quality=lossless&width=1279&height=660)
+
 ## 이상형 월드컵 게임
-![이상형 월드컵 화면]
+![이상형 월드컵 화면](https://cdn.discordapp.com/attachments/1383999022238273586/1385126315866329149/vs_.jpg?ex=6854eee8&is=68539d68&hm=b9a1f716cd25d700324b2437a2090bcbaa2d253baba33501e2202db7dce98629&)
+
 ## 틀린 그림 찾기
 ![틀린 그림 찾기](https://media.discordapp.net/attachments/1383999022238273586/1385085635504898069/651f2f96e72ea7f4.png?ex=6854c905&is=68537785&hm=1700f9728d7d40b5bae719cfadb3453c25bd7b7c8cd4ebd74b9b53d971daa29a&=&format=webp&quality=lossless&width=1010&height=568)
 
 ## 퀴즈 게임
+![퀴즈 게임](https://cdn.discordapp.com/attachments/1383999022238273586/1385126316503994398/e8ff88e262150048.jpg?ex=6854eee8&is=68539d68&hm=d0d0a06d797866a4df73282d4b6aabbdd5e983ba09f3660d785fc48fe5ea2d92&)
 
 ## 시나리오 게임
+![시나리오 게임](https://cdn.discordapp.com/attachments/1383999022238273586/1385126316130701373/8cc9c67c4ad610a9.jpg?ex=6854eee8&is=68539d68&hm=7904a8ef4ffb1ac049a2278e310db342126a57d483794534d0744e518b978029&)
+
+
+## 카카오로그인
+![카카오 로그인](https://cdn.discordapp.com/attachments/1383999022238273586/1385126316788940900/0d29136ae6dee40c.jpg?ex=6854eee8&is=68539d68&hm=cd1ad77024d4448300e7adc9e85c8afdec7537bcca467806bf8259b9af189bdd&)
+
 ---
 
 ## 📁디텍토리 구조
