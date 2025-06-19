@@ -13,6 +13,7 @@ import HeartEmpty from "../assets/HeartEmpty.png";
 
 const imageGroups = [
     {
+        id:1,
         left: image01_01,
         right: image01_02,
         answerAreas: [
@@ -24,6 +25,7 @@ const imageGroups = [
         ],
     },
     {
+        id:2,
         left: image02_01,
         right: image02_02,
         answerAreas: [
@@ -35,6 +37,7 @@ const imageGroups = [
         ],
     },
     {
+        id:3,
         left: image03_01,
         right: image03_02,
         answerAreas: [
@@ -47,8 +50,15 @@ const imageGroups = [
     },
 ];
 
-const SpotTheDifferenceGame = () => {
-    const [stageIndex, setStageIndex] = useState(0);
+interface SpotTheDifferenceGameProps {
+    gameId: number;
+    onBack: () => void;
+}
+
+const SpotTheDifferenceGame: React.FC<SpotTheDifferenceGameProps> = ({ gameId, onBack }) => {
+    const initialStageIndex = imageGroups.findIndex(group => group.id === gameId);
+
+    const [stageIndex, setStageIndex] = useState(initialStageIndex !== -1 ? initialStageIndex : 0);
     const [isStarted, setIsStarted] = useState(false);
     const [life, setLife] = useState(5);
     const [hintCount, setHintCount] = useState(0);
@@ -65,6 +75,17 @@ const SpotTheDifferenceGame = () => {
 
     const MAX_HINTS = 3;
     const currentStage = imageGroups[stageIndex];
+
+    useEffect(() => {
+        if (initialStageIndex === -1) {
+            onBack();
+        }
+    }, [initialStageIndex, onBack]);
+
+    if (!currentStage) {
+        return <div>잘못된 게임 ID입니다. 선택 화면으로 돌아갑니다.</div>;
+    }
+
     const answerAreas = currentStage.answerAreas;
 
     const handleStart = () => setIsStarted(true);
@@ -222,10 +243,9 @@ const SpotTheDifferenceGame = () => {
     };
 
     const handleExit = () => {
-        // 예: confirm 창 띄우기 또는 메인화면으로 이동
         const confirmed = window.confirm("게임을 종료하시겠습니까?");
         if (confirmed) {
-            window.close(); // 또는 메인화면 리디렉션
+            onBack();
         }
     };
 
@@ -268,7 +288,7 @@ const SpotTheDifferenceGame = () => {
                         </h2>
 
                         {stageIndex === imageGroups.length - 1 ? (
-                            <button onClick={() => setIsStarted(false)}>종료하기</button>
+                            <button onClick={onBack}>종료하기</button>
                         ) : (
                             <button
                                 onClick={() => {
@@ -281,11 +301,13 @@ const SpotTheDifferenceGame = () => {
 
                         {/* 마지막 스테이지든 아니든 종료 버튼은 항상 제공 */}
                         {stageIndex !== imageGroups.length - 1 && (
-                            <button onClick={() => setIsStarted(false)}>종료하기</button>
+                            <button onClick={onBack}>종료하기</button>
                         )}
                     </div>
                 </div>
             )}
+
+            
 
             {!isStarted && (
                 <div className="start-screen">
